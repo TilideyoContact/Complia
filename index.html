@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complia — Auto-diagnostic AI Act</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-icon">⚖️</span>
+                <span class="logo-text">COMPLIA</span>
+            </div>
+            <div class="header-tagline">Auto-diagnostic conformité AI Act</div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">Règlement (UE) 2024/1689</div>
+            <h1>Évaluez votre conformité<br>à l'<span class="highlight">EU AI Act</span></h1>
+            <p class="hero-sub">Répondez à ce questionnaire pour obtenir votre score de risque et identifier vos obligations réglementaires.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-value">35M€</span>
+                    <span class="stat-label">Amende maximale</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">Août 2026</span>
+                    <span class="stat-label">Échéance critique</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">~5 min</span>
+                    <span class="stat-label">Durée du diagnostic</span>
+                </div>
+            </div>
+            <button class="btn-primary btn-large" onclick="startQuestionnaire()">Commencer le diagnostic</button>
+        </div>
+    </section>
+
+    <!-- Questionnaire -->
+    <section class="questionnaire" id="questionnaire" style="display:none;">
+        <div class="container">
+            <!-- Progress bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">Section 1 / 6</div>
+            </div>
+
+            <form id="questionnaireForm">
+                <!-- ==================== SECTION 1: IDENTIFICATION ==================== -->
+                <div class="section" id="section-1">
+                    <div class="section-header">
+                        <div class="section-number">01</div>
+                        <div>
+                            <h2>Identification de l'entreprise</h2>
+                            <p class="section-desc">Informations générales sur votre organisation</p>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Raison sociale <span class="required">*</span></label>
+                        <input type="text" name="company_name" class="input" placeholder="Nom de votre entreprise" required>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Secteur d'activité <span class="required">*</span></label>
+                        <select name="sector" class="input" required>
+                            <option value="">Sélectionnez votre secteur</option>
+                            <option value="tech_saas">Tech / SaaS</option>
+                            <option value="finance">Finance / Banque / Assurance</option>
+                            <option value="sante">Santé / MedTech</option>
+                            <option value="rh">Ressources Humaines / Recrutement</option>
+                            <option value="education">Éducation / Formation</option>
+                            <option value="juridique">Juridique</option>
+                            <option value="commerce">Commerce / Retail</option>
+                            <option value="industrie">Industrie / Manufacturing</option>
+                            <option value="transport">Transport / Logistique</option>
+                            <option value="energie">Énergie / Environnement</option>
+                            <option value="immobilier">Immobilier</option>
+                            <option value="media">Média / Communication</option>
+                            <option value="administration">Administration publique</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Taille de l'entreprise <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-card">
+                                <input type="radio" name="company_size" value="tpe" required>
+                                <div class="radio-content">
+                                    <span class="radio-title">TPE</span>
+                                    <span class="radio-desc">&lt; 10 salariés</span>
+                                </div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="company_size" value="pme">
+                                <div class="radio-content">
+                                    <span class="radio-title">PME</span>
+                                    <span class="radio-desc">10 - 249 salariés</span>
+                                </div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="company_size" value="eti">
+                                <div class="radio-content">
+                                    <span class="radio-title">ETI</span>
+                                    <span class="radio-desc">250 - 4 999 salariés</span>
+                                </div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="company_size" value="ge">
+                                <div class="radio-content">
+                                    <span class="radio-title">Grande Entreprise</span>
+                                    <span class="radio-desc">5 000+ salariés</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Chiffre d'affaires annuel <span class="required">*</span></label>
+                        <select name="revenue" class="input" required>
+                            <option value="">Sélectionnez une tranche</option>
+                            <option value="moins_2m">Moins de 2M€</option>
+                            <option value="2m_10m">2M€ - 10M€</option>
+                            <option value="10m_50m">10M€ - 50M€</option>
+                            <option value="50m_250m">50M€ - 250M€</option>
+                            <option value="plus_250m">Plus de 250M€</option>
+                        </select>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Votre entreprise opère-t-elle dans l'Union Européenne ? <span class="required">*</span></label>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="eu_operation" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="eu_operation" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="eu_operation" value="partiellement">
+                                <div class="radio-content"><span class="radio-title">Partiellement</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <div></div>
+                        <button type="button" class="btn-primary" onclick="nextSection(1)">Continuer →</button>
+                    </div>
+                </div>
+
+                <!-- ==================== SECTION 2: RÔLE AI ACT ==================== -->
+                <div class="section" id="section-2" style="display:none;">
+                    <div class="section-header">
+                        <div class="section-number">02</div>
+                        <div>
+                            <h2>Votre rôle au regard de l'AI Act</h2>
+                            <p class="section-desc">Détermination de votre qualification réglementaire (Art. 3 du Règlement 2024/1689)</p>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Développez-vous ou entraînez-vous des systèmes ou modèles d'IA ? <span class="required">*</span></label>
+                        <p class="question-hint">Cela inclut : développement interne, fine-tuning de modèles, entraînement sur vos données (Art. 3(3))</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="develops_ai" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="develops_ai" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="develops_ai" value="ne_sais_pas">
+                                <div class="radio-content"><span class="radio-title">Je ne sais pas</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Mettez-vous sur le marché des systèmes d'IA sous votre propre nom ou marque ? <span class="required">*</span></label>
+                        <p class="question-hint">Mise à disposition sur le marché de l'UE, à titre onéreux ou gratuit (Art. 3(4))</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="markets_ai" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="markets_ai" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Utilisez-vous des systèmes d'IA dans vos activités professionnelles ? <span class="required">*</span></label>
+                        <p class="question-hint">En tant que « déployeur » sous votre autorité (Art. 3(4)) — ex : ChatGPT, outils RH, scoring, chatbot, CRM intelligent</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="deploys_ai" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="deploys_ai" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="deploys_ai" value="ne_sais_pas">
+                                <div class="radio-content"><span class="radio-title">Je ne sais pas</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Importez-vous des systèmes d'IA de l'extérieur de l'UE ? <span class="required">*</span></label>
+                        <p class="question-hint">Achat ou licence de systèmes IA auprès de fournisseurs hors UE (Art. 3(6))</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="imports_ai" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="imports_ai" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="imports_ai" value="ne_sais_pas">
+                                <div class="radio-content"><span class="radio-title">Je ne sais pas</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Distribuez-vous ou revendez-vous des solutions d'IA sans les modifier ? <span class="required">*</span></label>
+                        <p class="question-hint">Intégrateur, revendeur, distributeur de solutions tierces (Art. 3(7))</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="distributes_ai" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="distributes_ai" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <button type="button" class="btn-secondary" onclick="prevSection(2)">← Retour</button>
+                        <button type="button" class="btn-primary" onclick="nextSection(2)">Continuer →</button>
+                    </div>
+                </div>
+
+                <!-- ==================== SECTION 3: INVENTAIRE IA ==================== -->
+                <div class="section" id="section-3" style="display:none;">
+                    <div class="section-header">
+                        <div class="section-number">03</div>
+                        <div>
+                            <h2>Inventaire de vos systèmes d'IA</h2>
+                            <p class="section-desc">Identification des systèmes d'IA utilisés ou développés dans votre entreprise</p>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Quels types de systèmes d'IA utilisez-vous ? <span class="required">*</span></label>
+                        <p class="question-hint">Cochez tous les systèmes applicables</p>
+                        <div class="checkbox-group">
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="ai_systems" value="chatbot_genai">
+                                <div class="checkbox-content">
+                                    <span class="checkbox-title">IA générative / Chatbots</span>
+                                    <span class="checkbox-desc">ChatGPT, Claude, Gemini, Copilot, chatbot client...</span>
+                                </div>
+                            </label>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="ai_systems" value="rh_recrutement">
+                                <div class="checkbox-content">
+                                    <span class="checkbox-title">RH / Recrutement</span>
+                                    <span class="checkbox-desc">Tri de CV, scoring candidats, analyse de performance...</span>
+                                </div>
+                            </label>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="ai_systems" value="scoring_credit">
+                                <div class="checkbox-content">
+                                    <span class="checkbox-title">Scoring / Crédit</span>
+                                    <span class="checkbox-desc">Évaluation de solvabilité, notation de risque client...</span>
+                                </div>
+                            </label>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="ai_systems" value="biometrie">
+                                <div class="checkbox-content">
+                                    <span class="checkbox-title">Biométrie / Reconnaissance faciale</span>
+                                    <span class="checkbox-desc">Contrôle d'accès, identification, authentification...</span>
+                                </div>
+                            </label>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="ai_systems" value="surveillance">
+                                <div class="checkbox-content">
+                                    <span class="checkbox-title">Surveillance / Vidéo-analyse</span>
+                                    <span class="checkbox-desc">Détection comportement, comptage, surveillance temps réel...</span>
+                                </div>
+                            </label>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="ai_systems" value="diagnostic_medical">
+                                <div class="checkbox-content">
+                                    <span class="checkbox-title">Diagnostic médical / Santé</span>
+                                    <span class="checkbox-desc">Aide au diagnostic, imagerie médicale, prédiction...</span>
+                                </div>
+                            </label>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="ai_systems" value="vehicule_autonome">
+                                <div class="checkbox-content">
+                                    <span class="checkbox-title">Véhicules autonomes / Transport</span>
+                                    <span class="checkbox-desc">Conduite autonome, aide à la navigation, drones...</span>
+                                </div>
+                            </label>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="ai_systems" value="recommandation">
+                                <div class="checkbox-content">
+                                    <span class="checkbox-title">Recommandation / Personnalisation</span>
+                                    <span class="checkbox-desc">Moteur de recommandation, publicité ciblée, pricing dynamique...</span>
+                                </div>
+                            </label>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="ai_systems" value="infrastructure_critique">
+                                <div class="checkbox-content">
+                                    <span class="checkbox-title">Infrastructure critique</span>
+                                    <span class="checkbox-desc">Gestion réseau électrique, eau, gaz, télécom...</span>
+                                </div>
+                            </label>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="ai_systems" value="education_notation">
+                                <div class="checkbox-content">
+                                    <span class="checkbox-title">Éducation / Notation</span>
+                                    <span class="checkbox-desc">Évaluation des étudiants, orientation, admission...</span>
+                                </div>
+                            </label>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="ai_systems" value="justice_police">
+                                <div class="checkbox-content">
+                                    <span class="checkbox-title">Justice / Police / Sécurité</span>
+                                    <span class="checkbox-desc">Prédiction récidive, détection de fraude, analyse criminelle...</span>
+                                </div>
+                            </label>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="ai_systems" value="autre_ia">
+                                <div class="checkbox-content">
+                                    <span class="checkbox-title">Autre système d'IA</span>
+                                    <span class="checkbox-desc">Automatisation, analyse de données, NLP, vision...</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Combien de systèmes d'IA distincts utilisez-vous ? <span class="required">*</span></label>
+                        <select name="ai_count" class="input" required>
+                            <option value="">Sélectionnez</option>
+                            <option value="1_2">1 à 2</option>
+                            <option value="3_5">3 à 5</option>
+                            <option value="6_10">6 à 10</option>
+                            <option value="plus_10">Plus de 10</option>
+                            <option value="ne_sais_pas">Je ne sais pas</option>
+                        </select>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Disposez-vous d'un inventaire ou registre de vos systèmes d'IA ?</label>
+                        <p class="question-hint">Obligation pour les déployeurs de systèmes à haut risque (Art. 26(1))</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="has_registry" value="oui">
+                                <div class="radio-content"><span class="radio-title">Oui, formalisé</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="has_registry" value="partiel">
+                                <div class="radio-content"><span class="radio-title">Partiellement</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="has_registry" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <button type="button" class="btn-secondary" onclick="prevSection(3)">← Retour</button>
+                        <button type="button" class="btn-primary" onclick="nextSection(3)">Continuer →</button>
+                    </div>
+                </div>
+
+                <!-- ==================== SECTION 4: PRATIQUES INTERDITES ==================== -->
+                <div class="section" id="section-4" style="display:none;">
+                    <div class="section-header">
+                        <div class="section-number">04</div>
+                        <div>
+                            <h2>Pratiques d'IA interdites</h2>
+                            <p class="section-desc">Vérification au regard de l'Article 5 — Pratiques prohibées (en vigueur depuis février 2025)</p>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-danger">
+                        <strong>⚠️ ATTENTION :</strong> Les pratiques suivantes sont interdites depuis le 2 février 2025. Toute infraction expose à une amende pouvant atteindre <strong>35M€ ou 7% du CA mondial</strong>.
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Utilisez-vous des techniques subliminales ou manipulatrices via l'IA ? <span class="required">*</span></label>
+                        <p class="question-hint">Techniques visant à fausser le comportement d'une personne de manière à causer un préjudice (Art. 5(1)(a))</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_manipulation" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_manipulation" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_manipulation" value="ne_sais_pas">
+                                <div class="radio-content"><span class="radio-title">Je ne sais pas</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Exploitez-vous les vulnérabilités de groupes spécifiques (âge, handicap, situation sociale) ? <span class="required">*</span></label>
+                        <p class="question-hint">Art. 5(1)(b) — Exploitation de vulnérabilités pour influencer le comportement</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_vulnerability" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_vulnerability" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_vulnerability" value="ne_sais_pas">
+                                <div class="radio-content"><span class="radio-title">Je ne sais pas</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Pratiquez-vous le scoring social (évaluation de la fiabilité d'individus basée sur leur comportement social) ? <span class="required">*</span></label>
+                        <p class="question-hint">Art. 5(1)(c) — Évaluation/classification de personnes physiques basée sur leur comportement social ou caractéristiques personnelles</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_social_scoring" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_social_scoring" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_social_scoring" value="ne_sais_pas">
+                                <div class="radio-content"><span class="radio-title">Je ne sais pas</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Utilisez-vous l'identification biométrique à distance en temps réel dans des espaces publics ? <span class="required">*</span></label>
+                        <p class="question-hint">Art. 5(1)(h) — Sauf exceptions strictes (forces de l'ordre avec autorisation judiciaire)</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_biometric" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_biometric" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_biometric" value="ne_sais_pas">
+                                <div class="radio-content"><span class="radio-title">Je ne sais pas</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Utilisez-vous l'IA pour inférer les émotions sur le lieu de travail ou dans des établissements éducatifs ? <span class="required">*</span></label>
+                        <p class="question-hint">Art. 5(1)(f) — Sauf pour des raisons médicales ou de sécurité</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_emotion" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_emotion" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_emotion" value="ne_sais_pas">
+                                <div class="radio-content"><span class="radio-title">Je ne sais pas</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <button type="button" class="btn-secondary" onclick="prevSection(4)">← Retour</button>
+                        <button type="button" class="btn-primary" onclick="nextSection(4)">Continuer →</button>
+                    </div>
+                </div>
+
+                <!-- ==================== SECTION 5: CONFORMITÉ ACTUELLE ==================== -->
+                <div class="section" id="section-5" style="display:none;">
+                    <div class="section-header">
+                        <div class="section-number">05</div>
+                        <div>
+                            <h2>État de conformité actuelle</h2>
+                            <p class="section-desc">Évaluation de vos mesures de conformité en place</p>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Avez-vous informé vos employés de l'utilisation de systèmes d'IA dans l'entreprise ? <span class="required">*</span></label>
+                        <p class="question-hint">Obligation de formation en matière de maîtrise de l'IA (Art. 4)</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="employee_informed" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="employee_informed" value="partiel">
+                                <div class="radio-content"><span class="radio-title">Partiellement</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="employee_informed" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Avez-vous vérifié la documentation technique de vos fournisseurs d'IA ? <span class="required">*</span></label>
+                        <p class="question-hint">Le déployeur doit s'assurer de la conformité du fournisseur (Art. 26(1))</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="supplier_docs" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="supplier_docs" value="partiel">
+                                <div class="radio-content"><span class="radio-title">Partiellement</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="supplier_docs" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Avez-vous mis en place une surveillance humaine de vos systèmes d'IA ? <span class="required">*</span></label>
+                        <p class="question-hint">Human-in-the-loop / Human-on-the-loop (Art. 14, Art. 26(1))</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="human_oversight" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="human_oversight" value="partiel">
+                                <div class="radio-content"><span class="radio-title">Partiellement</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="human_oversight" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Conservez-vous les logs de vos systèmes d'IA ? <span class="required">*</span></label>
+                        <p class="question-hint">Conservation minimale de 6 mois pour les systèmes haut risque (Art. 26(5))</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="logs_conservation" value="oui_6m">
+                                <div class="radio-content"><span class="radio-title">Oui, ≥ 6 mois</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="logs_conservation" value="oui_moins">
+                                <div class="radio-content"><span class="radio-title">Oui, &lt; 6 mois</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="logs_conservation" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="logs_conservation" value="ne_sais_pas">
+                                <div class="radio-content"><span class="radio-title">Je ne sais pas</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Informez-vous les personnes concernées qu'elles interagissent avec un système d'IA ? <span class="required">*</span></label>
+                        <p class="question-hint">Obligation de transparence (Art. 50)</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="transparency" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="transparency" value="partiel">
+                                <div class="radio-content"><span class="radio-title">Partiellement</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="transparency" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Avez-vous réalisé une évaluation d'impact sur les droits fondamentaux (FRIA) ? <span class="required">*</span></label>
+                        <p class="question-hint">Obligatoire pour les déployeurs de systèmes IA à haut risque (Art. 27)</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="fria" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="fria" value="en_cours">
+                                <div class="radio-content"><span class="radio-title">En cours</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="fria" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="fria" value="non_concerne">
+                                <div class="radio-content"><span class="radio-title">Non concerné</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Avez-vous désigné un responsable de la conformité IA dans votre entreprise ?</label>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="compliance_officer" value="oui">
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="compliance_officer" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="compliance_officer" value="prevu">
+                                <div class="radio-content"><span class="radio-title">Prévu</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <button type="button" class="btn-secondary" onclick="prevSection(5)">← Retour</button>
+                        <button type="button" class="btn-primary" onclick="nextSection(5)">Continuer →</button>
+                    </div>
+                </div>
+
+                <!-- ==================== SECTION 6: GPAI & RGPD ==================== -->
+                <div class="section" id="section-6" style="display:none;">
+                    <div class="section-header">
+                        <div class="section-number">06</div>
+                        <div>
+                            <h2>IA à usage général (GPAI) & Conformité croisée</h2>
+                            <p class="section-desc">Obligations GPAI (en vigueur depuis août 2025) et articulation avec le RGPD</p>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Utilisez-vous ou intégrez-vous des modèles d'IA à usage général (GPAI) ? <span class="required">*</span></label>
+                        <p class="question-hint">Ex : GPT-4, Claude, Gemini, Llama, Mistral, Stable Diffusion... (Art. 51-56)</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="uses_gpai" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="uses_gpai" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="uses_gpai" value="ne_sais_pas">
+                                <div class="radio-content"><span class="radio-title">Je ne sais pas</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Le contenu généré par vos systèmes d'IA est-il identifié comme tel ? <span class="required">*</span></label>
+                        <p class="question-hint">Obligation de marquage : deepfakes, textes générés, images synthétiques (Art. 50(2))</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="content_labeling" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="content_labeling" value="partiel">
+                                <div class="radio-content"><span class="radio-title">Partiellement</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="content_labeling" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="content_labeling" value="non_applicable">
+                                <div class="radio-content"><span class="radio-title">Non applicable</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Vos systèmes d'IA traitent-ils des données personnelles ? <span class="required">*</span></label>
+                        <p class="question-hint">Articulation AI Act / RGPD (UE 2016/679)</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="personal_data" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="personal_data" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="personal_data" value="ne_sais_pas">
+                                <div class="radio-content"><span class="radio-title">Je ne sais pas</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Êtes-vous déjà conforme au RGPD pour les traitements impliquant de l'IA ?</label>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="rgpd_compliant" value="oui">
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="rgpd_compliant" value="partiel">
+                                <div class="radio-content"><span class="radio-title">Partiellement</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="rgpd_compliant" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Avez-vous connaissance de l'AI Act avant ce questionnaire ?</label>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="ai_act_awareness" value="oui_detail">
+                                <div class="radio-content"><span class="radio-title">Oui, en détail</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="ai_act_awareness" value="oui_vaguement">
+                                <div class="radio-content"><span class="radio-title">Vaguement</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="ai_act_awareness" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Email professionnel <span class="required">*</span></label>
+                        <p class="question-hint">Pour recevoir votre rapport de diagnostic</p>
+                        <input type="email" name="email" class="input" placeholder="votre@email.com" required>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <button type="button" class="btn-secondary" onclick="prevSection(6)">← Retour</button>
+                        <button type="button" class="btn-primary btn-submit" onclick="submitQuestionnaire()">Obtenir mon diagnostic →</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="results" id="results" style="display:none;">
+        <div class="container">
+            <div class="results-header">
+                <h2>Votre Diagnostic AI Act</h2>
+                <p class="results-sub">Résultat basé sur le Règlement (UE) 2024/1689</p>
+            </div>
+
+            <!-- Score -->
+            <div class="score-card" id="scoreCard">
+                <div class="score-circle" id="scoreCircle">
+                    <span class="score-value" id="scoreValue">0</span>
+                    <span class="score-max">/100</span>
+                </div>
+                <div class="score-info">
+                    <h3 id="scoreLevelLabel">Niveau de risque</h3>
+                    <p id="scoreLevelDesc">Calcul en cours...</p>
+                </div>
+            </div>
+
+            <!-- Role -->
+            <div class="result-block" id="roleBlock">
+                <h3>Votre qualification réglementaire</h3>
+                <div class="role-tags" id="roleTags"></div>
+            </div>
+
+            <!-- Alerts -->
+            <div id="alertsBlock"></div>
+
+            <!-- Risk classification -->
+            <div class="result-block" id="riskBlock">
+                <h3>Classification de vos systèmes d'IA</h3>
+                <div id="riskClassification"></div>
+            </div>
+
+            <!-- Obligations -->
+            <div class="result-block" id="obligationsBlock">
+                <h3>Vos obligations principales</h3>
+                <div id="obligationsList"></div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="result-block">
+                <h3>Échéances réglementaires</h3>
+                <div class="timeline">
+                    <div class="timeline-item done">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Fév. 2025 ✅</div>
+                            <div class="timeline-text">Interdictions IA — en vigueur</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item done">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Août 2025 ✅</div>
+                            <div class="timeline-text">Obligations GPAI & transparence — en vigueur</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item critical">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Août 2026 🔴</div>
+                            <div class="timeline-text">Obligations systèmes haut risque — 5 mois restants</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item upcoming">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Août 2027</div>
+                            <div class="timeline-text">Conformité produits intégrant de l'IA</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-block">
+                <h3>Besoin d'un accompagnement expert ?</h3>
+                <p>Complia vous accompagne dans votre mise en conformité avec l'AI Act.</p>
+                <div class="cta-offers">
+                    <div class="offer-card">
+                        <div class="offer-name">Diagnostic Flash ⚡</div>
+                        <div class="offer-price">990€ HT</div>
+                        <div class="offer-desc">Rapport complet en 5 jours</div>
+                    </div>
+                    <div class="offer-card featured">
+                        <div class="offer-badge">BEST-SELLER</div>
+                        <div class="offer-name">Pack Conformité Déployeur</div>
+                        <div class="offer-price">3 990€ HT</div>
+                        <div class="offer-desc">Conformité complète, audit ready</div>
+                    </div>
+                    <div class="offer-card">
+                        <div class="offer-name">Pack Conformité +</div>
+                        <div class="offer-price">6 990€ HT</div>
+                        <div class="offer-desc">Haut risque maîtrisé + FRIA</div>
+                    </div>
+                </div>
+                <a href="mailto:contact@complia.fr" class="btn-primary btn-large">Prendre rendez-vous →</a>
+            </div>
+
+            <!-- Legal -->
+            <div class="legal-notice">
+                <p><strong>AVERTISSEMENT LÉGAL :</strong> Ce diagnostic express est fourni à titre informatif sur la base du Règlement (UE) 2024/1689. Il ne constitue pas une consultation juridique. COMPLIA n'est pas un cabinet d'avocats. Le client reste seul responsable de la validation juridique finale de sa conformité.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <span class="logo-icon">⚖️</span> COMPLIA
+                    <span class="footer-sep">|</span>
+                    Conseil en conformité AI Act
+                </div>
+                <div class="footer-legal">
+                    Basé sur le Règlement (UE) 2024/1689 — © 2026 Complia
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
