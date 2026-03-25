@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complia — Sommaire du Questionnaire AI Act</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #fff;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 60px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            -webkit-font-smoothing: antialiased;
+        }
+        @media print {
+            body { padding: 20px; font-size: 11px; }
+            .page-break { page-break-before: always; }
+        }
+
+        /* Header */
+        .doc-header {
+            text-align: center;
+            padding-bottom: 40px;
+            border-bottom: 3px solid #1a2332;
+            margin-bottom: 40px;
+        }
+        .doc-logo { font-size: 32px; font-weight: 800; color: #1a2332; letter-spacing: 3px; }
+        .doc-subtitle { font-size: 18px; color: #64748b; margin-top: 8px; }
+        .doc-badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 4px 14px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+        .doc-meta {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        /* Sections */
+        .toc { margin-bottom: 48px; }
+        .toc h2 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #1a2332;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .toc-item {
+            display: flex;
+            align-items: baseline;
+            padding: 10px 0;
+            border-bottom: 1px dotted #e2e8f0;
+        }
+        .toc-number {
+            font-size: 24px;
+            font-weight: 800;
+            color: #2563eb;
+            min-width: 48px;
+        }
+        .toc-content { flex: 1; }
+        .toc-title { font-size: 15px; font-weight: 700; color: #1a2332; }
+        .toc-desc { font-size: 13px; color: #64748b; margin-top: 2px; }
+        .toc-ref { font-size: 11px; color: #94a3b8; font-style: italic; }
+        .toc-count {
+            font-size: 12px;
+            font-weight: 600;
+            color: #2563eb;
+            background: #dbeafe;
+            padding: 2px 10px;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+
+        /* Detail sections */
+        .detail-section {
+            margin-bottom: 36px;
+            padding: 24px 28px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-left: 4px solid #2563eb;
+        }
+        .detail-section h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a2332;
+            margin-bottom: 4px;
+        }
+        .detail-section .section-ref {
+            font-size: 12px;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .question-list { list-style: none; }
+        .question-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 13px;
+            display: flex;
+            gap: 8px;
+        }
+        .question-list li:last-child { border-bottom: none; }
+        .q-num {
+            color: #2563eb;
+            font-weight: 700;
+            min-width: 28px;
+        }
+        .q-ref {
+            color: #94a3b8;
+            font-size: 11px;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        /* Risk levels */
+        .risk-legend {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .risk-box {
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .risk-box.interdit { background: #fef2f2; border: 1px solid #fecaca; }
+        .risk-box.haut { background: #fff7ed; border: 1px solid #fed7aa; }
+        .risk-box.limite { background: #fffbeb; border: 1px solid #fde68a; }
+        .risk-box.minimal { background: #f0fdf4; border: 1px solid #bbf7d0; }
+        .risk-box .risk-label { font-size: 12px; font-weight: 700; text-transform: uppercase; }
+        .risk-box .risk-amende { font-size: 11px; color: #64748b; margin-top: 4px; }
+
+        /* Stats */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 24px 0 40px;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .stat-card .stat-val { font-size: 28px; font-weight: 800; color: #1a2332; }
+        .stat-card .stat-lab { font-size: 12px; color: #64748b; margin-top: 4px; }
+
+        /* Footer */
+        .doc-footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 2px solid #1a2332;
+            text-align: center;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+        .doc-footer strong { color: #1a2332; }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <div class="doc-header">
+        <div class="doc-logo">COMPLIA</div>
+        <div class="doc-subtitle">Questionnaire Auto-diagnostic AI Act</div>
+        <div class="doc-badge">Basé sur le Règlement (UE) 2024/1689 — Journal Officiel</div>
+        <div class="doc-meta">
+            <span>Version 2.0</span>
+            <span>Mars 2026</span>
+            <span>~5 minutes</span>
+        </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-row">
+        <div class="stat-card">
+            <div class="stat-val">6</div>
+            <div class="stat-lab">Sections</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-val">35</div>
+            <div class="stat-lab">Questions</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-val">15</div>
+            <div class="stat-lab">Articles couverts</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-val">4</div>
+            <div class="stat-lab">Niveaux de risque</div>
+        </div>
+    </div>
+
+    <!-- TABLE DES MATIÈRES -->
+    <div class="toc">
+        <h2>Sommaire</h2>
+        <div class="toc-item">
+            <span class="toc-number">01</span>
+            <div class="toc-content">
+                <div class="toc-title">Identification de l'entreprise</div>
+                <div class="toc-desc">Raison sociale, secteur, taille, CA, périmètre UE</div>
+            </div>
+            <span class="toc-count">5 questions</span>
+        </div>
+        <div class="toc-item">
+            <span class="toc-number">02</span>
+            <div class="toc-content">
+                <div class="toc-title">Rôle au regard de l'AI Act</div>
+                <div class="toc-desc">Fournisseur / Déployeur / Importateur / Distributeur</div>
+                <div class="toc-ref">Art. 3(3)(4)(6)(7)</div>
+            </div>
+            <span class="toc-count">5 questions</span>
+        </div>
+        <div class="toc-item">
+            <span class="toc-number">03</span>
+            <div class="toc-content">
+                <div class="toc-title">Inventaire des systèmes d'IA</div>
+                <div class="toc-desc">15 catégories alignées sur l'Annexe III (8 domaines haut risque)</div>
+                <div class="toc-ref">Art. 6, Annexe III</div>
+            </div>
+            <span class="toc-count">3 questions</span>
+        </div>
+        <div class="toc-item">
+            <span class="toc-number">04</span>
+            <div class="toc-content">
+                <div class="toc-title">Pratiques d'IA interdites</div>
+                <div class="toc-desc">8 pratiques prohibées — en vigueur depuis fév. 2025</div>
+                <div class="toc-ref">Art. 5(1)(a) à (h)</div>
+            </div>
+            <span class="toc-count">8 questions</span>
+        </div>
+        <div class="toc-item">
+            <span class="toc-number">05</span>
+            <div class="toc-content">
+                <div class="toc-title">État de conformité actuelle</div>
+                <div class="toc-desc">Obligations déployeur, surveillance humaine, logs, FRIA</div>
+                <div class="toc-ref">Art. 4, 14, 26, 27, 50</div>
+            </div>
+            <span class="toc-count">9 questions</span>
+        </div>
+        <div class="toc-item">
+            <span class="toc-number">06</span>
+            <div class="toc-content">
+                <div class="toc-title">GPAI, Transparence & Conformité croisée</div>
+                <div class="toc-desc">Modèles à usage général, deepfakes, risque systémique, RGPD</div>
+                <div class="toc-ref">Art. 50, 51-56, Règl. 2016/679</div>
+            </div>
+            <span class="toc-count">7 questions</span>
+        </div>
+    </div>
+
+    <!-- NIVEAUX DE RISQUE -->
+    <h2 style="font-size:20px;font-weight:800;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #e2e8f0;">Classification des risques</h2>
+    <div class="risk-legend">
+        <div class="risk-box interdit">
+            <div class="risk-label" style="color:#991b1b;">Interdit</div>
+            <div class="risk-amende">Art. 5</div>
+            <div class="risk-amende"><strong>35M€ / 7% CA</strong></div>
+        </div>
+        <div class="risk-box haut">
+            <div class="risk-label" style="color:#9a3412;">Haut risque</div>
+            <div class="risk-amende">Annexe III</div>
+            <div class="risk-amende"><strong>15M€ / 3% CA</strong></div>
+        </div>
+        <div class="risk-box limite">
+            <div class="risk-label" style="color:#92400e;">Risque limité</div>
+            <div class="risk-amende">Art. 50</div>
+            <div class="risk-amende">Transparence</div>
+        </div>
+        <div class="risk-box minimal">
+            <div class="risk-label" style="color:#065f46;">Minimal</div>
+            <div class="risk-amende">Art. 6</div>
+            <div class="risk-amende">Volontaire</div>
+        </div>
+    </div>
+
+    <!-- DÉTAIL DES SECTIONS -->
+    <div class="page-break"></div>
+    <h2 style="font-size:20px;font-weight:800;margin:40px 0 20px;padding-bottom:8px;border-bottom:2px solid #e2e8f0;">Détail des questions</h2>
+
+    <div class="detail-section">
+        <h3>01 — Identification de l'entreprise</h3>
+        <ul class="question-list">
+            <li><span class="q-num">Q1</span> Raison sociale</li>
+            <li><span class="q-num">Q2</span> Secteur d'activité (14 secteurs)</li>
+            <li><span class="q-num">Q3</span> Taille de l'entreprise (TPE / PME / ETI / GE)</li>
+            <li><span class="q-num">Q4</span> Chiffre d'affaires annuel</li>
+            <li><span class="q-num">Q5</span> Opérations dans l'Union Européenne</li>
+        </ul>
+    </div>
+
+    <div class="detail-section">
+        <h3>02 — Rôle au regard de l'AI Act</h3>
+        <div class="section-ref">Art. 3 — Définitions</div>
+        <ul class="question-list">
+            <li><span class="q-num">Q6</span> Développez-vous ou entraînez-vous des systèmes d'IA ? <span class="q-ref">Art. 3(3)</span></li>
+            <li><span class="q-num">Q7</span> Mettez-vous sur le marché des systèmes d'IA sous votre marque ? <span class="q-ref">Art. 3(4)</span></li>
+            <li><span class="q-num">Q8</span> Utilisez-vous des systèmes d'IA dans vos activités ? <span class="q-ref">Art. 3(4)</span></li>
+            <li><span class="q-num">Q9</span> Importez-vous des systèmes d'IA de l'extérieur de l'UE ? <span class="q-ref">Art. 3(6)</span></li>
+            <li><span class="q-num">Q10</span> Distribuez-vous des solutions d'IA sans les modifier ? <span class="q-ref">Art. 3(7)</span></li>
+        </ul>
+    </div>
+
+    <div class="detail-section">
+        <h3>03 — Inventaire des systèmes d'IA</h3>
+        <div class="section-ref">Art. 6, Annexe III — Classification & domaines haut risque</div>
+        <ul class="question-list">
+            <li><span class="q-num">Q11</span> Types de systèmes d'IA utilisés (15 catégories dont 12 haut risque) <span class="q-ref">Annexe III</span></li>
+            <li><span class="q-num">Q12</span> Nombre de systèmes d'IA distincts</li>
+            <li><span class="q-num">Q13</span> Existence d'un registre/inventaire des systèmes IA <span class="q-ref">Art. 26(1)</span></li>
+        </ul>
+    </div>
+
+    <div class="detail-section" style="border-left-color:#dc2626;">
+        <h3>04 — Pratiques d'IA interdites</h3>
+        <div class="section-ref" style="color:#dc2626;">Art. 5 — En vigueur depuis le 2 février 2025 — Amende max : 35M€ / 7% CA</div>
+        <ul class="question-list">
+            <li><span class="q-num">Q14</span> Techniques subliminales ou manipulatrices <span class="q-ref">Art. 5(1)(a)</span></li>
+            <li><span class="q-num">Q15</span> Exploitation des vulnérabilités (âge, handicap, situation sociale) <span class="q-ref">Art. 5(1)(b)</span></li>
+            <li><span class="q-num">Q16</span> Scoring social <span class="q-ref">Art. 5(1)(c)</span></li>
+            <li><span class="q-num">Q17</span> Police prédictive basée sur le profilage individuel <span class="q-ref">Art. 5(1)(d)</span></li>
+            <li><span class="q-num">Q18</span> Moissonnage non ciblé d'images faciales (internet/CCTV) <span class="q-ref">Art. 5(1)(e)</span></li>
+            <li><span class="q-num">Q19</span> Inférence des émotions au travail / éducation <span class="q-ref">Art. 5(1)(f)</span></li>
+            <li><span class="q-num">Q20</span> Catégorisation biométrique des attributs sensibles <span class="q-ref">Art. 5(1)(g)</span></li>
+            <li><span class="q-num">Q21</span> Identification biométrique à distance en temps réel (espaces publics) <span class="q-ref">Art. 5(1)(h)</span></li>
+        </ul>
+    </div>
+
+    <div class="detail-section">
+        <h3>05 — État de conformité actuelle</h3>
+        <div class="section-ref">Art. 4, 14, 26, 27, 50 — Obligations déployeur</div>
+        <ul class="question-list">
+            <li><span class="q-num">Q22</span> Information des employés (maîtrise de l'IA) <span class="q-ref">Art. 4</span></li>
+            <li><span class="q-num">Q23</span> Vérification documentation technique fournisseurs <span class="q-ref">Art. 26(1)</span></li>
+            <li><span class="q-num">Q24</span> Surveillance humaine (human-in-the-loop) <span class="q-ref">Art. 14, 26(1)</span></li>
+            <li><span class="q-num">Q25</span> Conservation des logs (min. 6 mois) <span class="q-ref">Art. 26(5)</span></li>
+            <li><span class="q-num">Q26</span> Transparence vis-à-vis des utilisateurs <span class="q-ref">Art. 50</span></li>
+            <li><span class="q-num">Q27</span> FRIA — Évaluation d'impact droits fondamentaux <span class="q-ref">Art. 27</span></li>
+            <li><span class="q-num">Q28</span> Information des travailleurs et représentants du personnel <span class="q-ref">Art. 26(7)</span></li>
+            <li><span class="q-num">Q29</span> Information des personnes sur les décisions IA haut risque <span class="q-ref">Art. 26(11)</span></li>
+            <li><span class="q-num">Q30</span> Désignation d'un responsable conformité IA</li>
+        </ul>
+    </div>
+
+    <div class="detail-section">
+        <h3>06 — GPAI, Transparence & Conformité croisée</h3>
+        <div class="section-ref">Art. 50, 51-56 — En vigueur depuis août 2025 | Règl. 2016/679 (RGPD)</div>
+        <ul class="question-list">
+            <li><span class="q-num">Q31</span> Utilisation de modèles GPAI (GPT, Claude, Gemini, Mistral...) <span class="q-ref">Art. 51-56</span></li>
+            <li><span class="q-num">Q32</span> Marquage du contenu généré par IA <span class="q-ref">Art. 50(2)</span></li>
+            <li><span class="q-num">Q33</span> Hypertrucages (deepfakes) — étiquetage <span class="q-ref">Art. 50(4)</span></li>
+            <li><span class="q-num">Q34</span> Risque systémique GPAI (> 10²⁵ FLOPs) <span class="q-ref">Art. 51, 55</span></li>
+            <li><span class="q-num">Q35</span> Traitement de données personnelles <span class="q-ref">Règl. 2016/679</span></li>
+            <li><span class="q-num">Q36</span> Conformité RGPD pour les traitements IA</li>
+            <li><span class="q-num">Q37</span> Connaissance préalable de l'AI Act + Email</li>
+        </ul>
+    </div>
+
+    <!-- RÉSULTATS GÉNÉRÉS -->
+    <h2 style="font-size:20px;font-weight:800;margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid #e2e8f0;">Résultats générés automatiquement</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="padding:16px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;">
+            <strong>Score de risque /100</strong>
+            <p style="font-size:13px;color:#64748b;margin-top:4px;">Calcul pondéré : rôle, pratiques interdites, systèmes haut risque, lacunes de conformité, secteur, taille</p>
+        </div>
+        <div style="padding:16px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;">
+            <strong>Qualification réglementaire</strong>
+            <p style="font-size:13px;color:#64748b;margin-top:4px;">Identification automatique du rôle : Fournisseur, Déployeur, Importateur, Distributeur</p>
+        </div>
+        <div style="padding:16px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;">
+            <strong>Classification des systèmes</strong>
+            <p style="font-size:13px;color:#64748b;margin-top:4px;">Chaque système classifié : Interdit / Haut risque / Limité / Minimal</p>
+        </div>
+        <div style="padding:16px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;">
+            <strong>Obligations identifiées</strong>
+            <p style="font-size:13px;color:#64748b;margin-top:4px;">Liste avec statut (conforme / partiel / manquant) et référence article</p>
+        </div>
+    </div>
+
+    <!-- SOURCES -->
+    <h2 style="font-size:20px;font-weight:800;margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid #e2e8f0;">Sources réglementaires</h2>
+    <ul style="font-size:13px;color:#64748b;list-style:disc;padding-left:20px;line-height:2;">
+        <li><strong>Règlement (UE) 2024/1689</strong> — AI Act (JO L, 12.7.2024)</li>
+        <li><strong>Annexe III</strong> — Domaines des systèmes IA à haut risque (8 domaines)</li>
+        <li><strong>Annexe IV</strong> — Documentation technique</li>
+        <li><strong>Règlement (UE) 2016/679</strong> — RGPD</li>
+        <li><strong>Règlement (UE) 2022/2065</strong> — DSA</li>
+        <li><strong>Recommandation (UE) 2026/720</strong> — Entreprises innovantes</li>
+    </ul>
+
+    <!-- FOOTER -->
+    <div class="doc-footer">
+        <strong>COMPLIA</strong> — Conseil en conformité AI Act<br>
+        Basé sur le Règlement (UE) 2024/1689 — Journal Officiel de l'Union Européenne<br>
+        Document de présentation — Mars 2026
+    </div>
+
+</body>
+</html>
