@@ -356,6 +356,27 @@
                                 </div>
                             </label>
                             <label class="checkbox-card">
+                                <input type="checkbox" name="ai_systems" value="services_essentiels">
+                                <div class="checkbox-content">
+                                    <span class="checkbox-title">Services essentiels / Prestations sociales</span>
+                                    <span class="checkbox-desc">Assurance, aides sociales, services d'urgence (Annexe III, pt 5)...</span>
+                                </div>
+                            </label>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="ai_systems" value="migration_frontieres">
+                                <div class="checkbox-content">
+                                    <span class="checkbox-title">Migration / Asile / Contrôle aux frontières</span>
+                                    <span class="checkbox-desc">Évaluation des demandes, vérification documents (Annexe III, pt 7)...</span>
+                                </div>
+                            </label>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="ai_systems" value="democratie">
+                                <div class="checkbox-content">
+                                    <span class="checkbox-title">Justice / Processus démocratiques</span>
+                                    <span class="checkbox-desc">Aide à la décision judiciaire, influence électorale (Annexe III, pt 8)...</span>
+                                </div>
+                            </label>
+                            <label class="checkbox-card">
                                 <input type="checkbox" name="ai_systems" value="autre_ia">
                                 <div class="checkbox-content">
                                     <span class="checkbox-title">Autre système d'IA</span>
@@ -474,19 +495,38 @@
                     </div>
 
                     <div class="question-group">
-                        <label class="question-label">Utilisez-vous l'identification biométrique à distance en temps réel dans des espaces publics ? <span class="required">*</span></label>
-                        <p class="question-hint">Art. 5(1)(h) — Sauf exceptions strictes (forces de l'ordre avec autorisation judiciaire)</p>
+                        <label class="question-label">Utilisez-vous l'IA pour évaluer le risque qu'une personne commette une infraction, uniquement sur la base de son profilage ou de ses traits de personnalité ? <span class="required">*</span></label>
+                        <p class="question-hint">Art. 5(1)(d) — Police prédictive basée sur le profilage individuel (sauf en appui d'une évaluation humaine fondée sur des faits objectifs)</p>
                         <div class="radio-group radio-inline">
                             <label class="radio-card">
-                                <input type="radio" name="prohibited_biometric" value="oui" required>
+                                <input type="radio" name="prohibited_predictive_policing" value="oui" required>
                                 <div class="radio-content"><span class="radio-title">Oui</span></div>
                             </label>
                             <label class="radio-card">
-                                <input type="radio" name="prohibited_biometric" value="non">
+                                <input type="radio" name="prohibited_predictive_policing" value="non">
                                 <div class="radio-content"><span class="radio-title">Non</span></div>
                             </label>
                             <label class="radio-card">
-                                <input type="radio" name="prohibited_biometric" value="ne_sais_pas">
+                                <input type="radio" name="prohibited_predictive_policing" value="ne_sais_pas">
+                                <div class="radio-content"><span class="radio-title">Je ne sais pas</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Procédez-vous au moissonnage non ciblé d'images faciales provenant d'internet ou de vidéosurveillance pour constituer des bases de données de reconnaissance faciale ? <span class="required">*</span></label>
+                        <p class="question-hint">Art. 5(1)(e) — Création ou expansion de bases de données par extraction non ciblée d'images faciales</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_facial_scraping" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_facial_scraping" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_facial_scraping" value="ne_sais_pas">
                                 <div class="radio-content"><span class="radio-title">Je ne sais pas</span></div>
                             </label>
                         </div>
@@ -506,6 +546,44 @@
                             </label>
                             <label class="radio-card">
                                 <input type="radio" name="prohibited_emotion" value="ne_sais_pas">
+                                <div class="radio-content"><span class="radio-title">Je ne sais pas</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Utilisez-vous des systèmes de catégorisation biométrique pour inférer des données sensibles (race, opinions politiques, religion, orientation sexuelle) ? <span class="required">*</span></label>
+                        <p class="question-hint">Art. 5(1)(g) — Classification de personnes sur la base de données biométriques pour déduire des caractéristiques protégées</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_biometric_categorization" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_biometric_categorization" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_biometric_categorization" value="ne_sais_pas">
+                                <div class="radio-content"><span class="radio-title">Je ne sais pas</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Utilisez-vous l'identification biométrique à distance en temps réel dans des espaces accessibles au public ? <span class="required">*</span></label>
+                        <p class="question-hint">Art. 5(1)(h) — Sauf exceptions strictes réservées aux forces de l'ordre avec autorisation judiciaire préalable</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_biometric" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_biometric" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="prohibited_biometric" value="ne_sais_pas">
                                 <div class="radio-content"><span class="radio-title">Je ne sais pas</span></div>
                             </label>
                         </div>
@@ -650,6 +728,44 @@
                     </div>
 
                     <div class="question-group">
+                        <label class="question-label">Avez-vous informé vos représentants du personnel / comité d'entreprise de l'utilisation de systèmes d'IA à haut risque ? <span class="required">*</span></label>
+                        <p class="question-hint">Obligation d'information des travailleurs et de leurs représentants (Art. 26(7))</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="workers_informed" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="workers_informed" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="workers_informed" value="non_concerne">
+                                <div class="radio-content"><span class="radio-title">Non concerné</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Informez-vous les personnes physiques qu'elles font l'objet d'une décision prise ou assistée par un système d'IA à haut risque ? <span class="required">*</span></label>
+                        <p class="question-hint">Obligation d'information des personnes concernées par des décisions IA (Art. 26(11))</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="individuals_informed" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="individuals_informed" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="individuals_informed" value="non_concerne">
+                                <div class="radio-content"><span class="radio-title">Non concerné</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
                         <label class="question-label">Avez-vous désigné un responsable de la conformité IA dans votre entreprise ?</label>
                         <div class="radio-group radio-inline">
                             <label class="radio-card">
@@ -721,6 +837,40 @@
                             <label class="radio-card">
                                 <input type="radio" name="content_labeling" value="non_applicable">
                                 <div class="radio-content"><span class="radio-title">Non applicable</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Générez-vous ou diffusez-vous des hypertrucages (deepfakes) — images, audio ou vidéo — qui semblent représenter de vraies personnes ou événements ? <span class="required">*</span></label>
+                        <p class="question-hint">Art. 50(4) — Obligation d'étiqueter clairement le contenu comme généré ou manipulé artificiellement</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="deepfakes" value="oui" required>
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="deepfakes" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <label class="question-label">Si vous êtes fournisseur de modèles GPAI, vos modèles présentent-ils un risque systémique (capacité de calcul > 10²⁵ FLOPs) ?</label>
+                        <p class="question-hint">Art. 51 — Seuil de risque systémique pour les modèles d'IA à usage général</p>
+                        <div class="radio-group radio-inline">
+                            <label class="radio-card">
+                                <input type="radio" name="gpai_systemic" value="oui">
+                                <div class="radio-content"><span class="radio-title">Oui</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="gpai_systemic" value="non">
+                                <div class="radio-content"><span class="radio-title">Non</span></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="gpai_systemic" value="non_concerne">
+                                <div class="radio-content"><span class="radio-title">Non concerné</span></div>
                             </label>
                         </div>
                     </div>

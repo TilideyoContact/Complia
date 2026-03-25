@@ -108,31 +108,37 @@ function getFormData() {
 
 // ============ SCORING ENGINE ============
 
-// High-risk AI systems per Annexe III of AI Act
+// High-risk AI systems per Annexe III of AI Act (8 domains)
 const HIGH_RISK_SYSTEMS = [
-    'rh_recrutement',
-    'scoring_credit',
-    'biometrie',
-    'surveillance',
-    'diagnostic_medical',
-    'vehicule_autonome',
-    'infrastructure_critique',
-    'education_notation',
-    'justice_police'
+    'biometrie',              // Annexe III, pt 1
+    'infrastructure_critique', // Annexe III, pt 2
+    'education_notation',      // Annexe III, pt 3
+    'rh_recrutement',          // Annexe III, pt 4
+    'scoring_credit',          // Annexe III, pt 5 (services essentiels)
+    'services_essentiels',     // Annexe III, pt 5
+    'justice_police',          // Annexe III, pt 6
+    'migration_frontieres',    // Annexe III, pt 7
+    'democratie',              // Annexe III, pt 8
+    'surveillance',            // Composant de sécurité (Art. 6(1))
+    'diagnostic_medical',      // Dispositif médical (Annexe I, sect. A)
+    'vehicule_autonome'        // Sécurité produit (Annexe I)
 ];
 
 const SYSTEM_LABELS = {
     'chatbot_genai': 'IA générative / Chatbots',
-    'rh_recrutement': 'RH / Recrutement',
-    'scoring_credit': 'Scoring / Crédit',
-    'biometrie': 'Biométrie / Reconnaissance faciale',
+    'biometrie': 'Biométrie / Reconnaissance faciale (Annexe III, pt 1)',
+    'infrastructure_critique': 'Infrastructure critique (Annexe III, pt 2)',
+    'education_notation': 'Éducation / Notation (Annexe III, pt 3)',
+    'rh_recrutement': 'RH / Recrutement (Annexe III, pt 4)',
+    'scoring_credit': 'Scoring / Crédit (Annexe III, pt 5)',
+    'services_essentiels': 'Services essentiels / Prestations sociales (Annexe III, pt 5)',
+    'justice_police': 'Justice / Police / Sécurité (Annexe III, pt 6)',
+    'migration_frontieres': 'Migration / Asile / Frontières (Annexe III, pt 7)',
+    'democratie': 'Justice / Processus démocratiques (Annexe III, pt 8)',
     'surveillance': 'Surveillance / Vidéo-analyse',
     'diagnostic_medical': 'Diagnostic médical / Santé',
     'vehicule_autonome': 'Véhicules autonomes / Transport',
     'recommandation': 'Recommandation / Personnalisation',
-    'infrastructure_critique': 'Infrastructure critique',
-    'education_notation': 'Éducation / Notation',
-    'justice_police': 'Justice / Police / Sécurité',
     'autre_ia': 'Autre système d\'IA'
 };
 
@@ -145,13 +151,16 @@ function calculateScore(data) {
     if (data.imports_ai === 'oui') riskScore += 10;
     if (data.distributes_ai === 'oui') riskScore += 3;
 
-    // --- 2. Prohibited practices (CRITICAL) ---
+    // --- 2. Prohibited practices — Art. 5(1)(a)-(h) (CRITICAL) ---
     const prohibitedFields = [
-        'prohibited_manipulation',
-        'prohibited_vulnerability',
-        'prohibited_social_scoring',
-        'prohibited_biometric',
-        'prohibited_emotion'
+        'prohibited_manipulation',              // Art. 5(1)(a)
+        'prohibited_vulnerability',             // Art. 5(1)(b)
+        'prohibited_social_scoring',            // Art. 5(1)(c)
+        'prohibited_predictive_policing',       // Art. 5(1)(d)
+        'prohibited_facial_scraping',           // Art. 5(1)(e)
+        'prohibited_emotion',                   // Art. 5(1)(f)
+        'prohibited_biometric_categorization',  // Art. 5(1)(g)
+        'prohibited_biometric'                  // Art. 5(1)(h)
     ];
     let prohibitedCount = 0;
     prohibitedFields.forEach(field => {
@@ -190,6 +199,10 @@ function calculateScore(data) {
     if (data.compliance_officer === 'non') riskScore += 3;
     if (data.content_labeling === 'non') riskScore += 4;
     if (data.content_labeling === 'partiel') riskScore += 2;
+    if (data.workers_informed === 'non') riskScore += 5;
+    if (data.individuals_informed === 'non') riskScore += 5;
+    if (data.deepfakes === 'oui' && data.content_labeling !== 'oui') riskScore += 6;
+    if (data.gpai_systemic === 'oui') riskScore += 10;
 
     // --- 6. Personal data & RGPD ---
     if (data.personal_data === 'oui' && data.rgpd_compliant === 'non') riskScore += 6;
@@ -231,13 +244,16 @@ function classifySystems(data) {
     const systems = data.ai_systems || [];
     const classified = [];
 
-    // Check prohibited
+    // Check prohibited — Art. 5(1)(a)-(h)
     const hasProhibited = [
         'prohibited_manipulation',
         'prohibited_vulnerability',
         'prohibited_social_scoring',
-        'prohibited_biometric',
-        'prohibited_emotion'
+        'prohibited_predictive_policing',
+        'prohibited_facial_scraping',
+        'prohibited_emotion',
+        'prohibited_biometric_categorization',
+        'prohibited_biometric'
     ].some(f => data[f] === 'oui');
 
     if (hasProhibited) {
@@ -316,6 +332,18 @@ function getObligations(data, roles, riskSystems) {
             status: data.supplier_docs === 'oui' ? 'done' : data.supplier_docs === 'partiel' ? 'partial' : 'missing'
         });
 
+        obligations.push({
+            name: 'Information des travailleurs et représentants du personnel',
+            ref: 'Art. 26(7)',
+            status: data.workers_informed === 'oui' ? 'done' : data.workers_informed === 'non_concerne' ? 'done' : 'missing'
+        });
+
+        obligations.push({
+            name: 'Information des personnes sur les décisions IA à haut risque',
+            ref: 'Art. 26(11)',
+            status: data.individuals_informed === 'oui' ? 'done' : data.individuals_informed === 'non_concerne' ? 'done' : 'missing'
+        });
+
         if (hasHighRisk) {
             obligations.push({
                 name: 'FRIA — Évaluation d\'impact droits fondamentaux',
@@ -323,6 +351,39 @@ function getObligations(data, roles, riskSystems) {
                 status: data.fria === 'oui' ? 'done' : data.fria === 'en_cours' ? 'partial' : 'missing'
             });
         }
+    }
+
+    // Deepfake obligations — Art. 50(4)
+    if (data.deepfakes === 'oui') {
+        obligations.push({
+            name: 'Étiquetage des hypertrucages (deepfakes)',
+            ref: 'Art. 50(4)',
+            status: data.content_labeling === 'oui' ? 'done' : data.content_labeling === 'partiel' ? 'partial' : 'missing'
+        });
+    }
+
+    // GPAI systemic risk — Art. 55
+    if (data.gpai_systemic === 'oui') {
+        obligations.push({
+            name: 'Tests contradictoires (adversarial testing)',
+            ref: 'Art. 55(1)(a)',
+            status: 'missing'
+        });
+        obligations.push({
+            name: 'Évaluation et atténuation des risques systémiques',
+            ref: 'Art. 55(1)(b)',
+            status: 'missing'
+        });
+        obligations.push({
+            name: 'Signalement des incidents graves',
+            ref: 'Art. 55(1)(c)',
+            status: 'missing'
+        });
+        obligations.push({
+            name: 'Protection en matière de cybersécurité',
+            ref: 'Art. 55(1)(d)',
+            status: 'missing'
+        });
     }
 
     // Provider obligations
