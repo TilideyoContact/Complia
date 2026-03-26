@@ -301,20 +301,21 @@ body {
 .section-header {
     display: flex;
     align-items: flex-start;
-    gap: 16px;
-    margin-bottom: 28px;
+    gap: 20px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--border);
     flex-wrap: wrap;
 }
 .section-number {
-    font-size: 32px;
+    font-size: 36px;
     font-weight: 800;
     color: var(--accent);
-    opacity: 0.3;
     line-height: 1;
-    min-width: 48px;
+    min-width: 56px;
 }
-.section-header h2 { font-size: 1.4rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-.section-desc { font-size: 14px; color: var(--text-secondary); }
+.section-header h2 { font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+.section-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
 
 /* ============ QUESTION GROUPS ============ */
 .question-group { margin-bottom: 24px; }
@@ -358,31 +359,34 @@ select.input {
 textarea.input { min-height: 80px; resize: vertical; }
 
 /* ============ RADIO & CHECKBOX CARDS ============ */
-.radio-group, .checkbox-group { display: flex; flex-direction: column; gap: 8px; }
-.radio-inline { flex-direction: row; flex-wrap: wrap; }
+.radio-group, .checkbox-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.radio-inline { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
 
 .radio-card, .checkbox-card { cursor: pointer; display: block; }
 .radio-card input, .checkbox-card input { position: absolute; opacity: 0; pointer-events: none; }
 
 .radio-content, .checkbox-content {
     display: flex; flex-direction: column;
-    padding: 14px 16px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    padding: 16px 18px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
     background: var(--white);
     transition: var(--transition);
     min-height: 56px;
     justify-content: center;
+    box-shadow: var(--shadow-sm);
 }
 .radio-content:hover, .checkbox-content:hover {
     border-color: var(--border-hover);
-    background: var(--bg);
+    background: #fafbfc;
+    box-shadow: var(--shadow);
+    transform: translateY(-1px);
 }
 .radio-card input:checked + .radio-content,
 .checkbox-card input:checked + .checkbox-content {
     border-color: var(--accent);
     background: var(--accent-light);
-    box-shadow: 0 0 0 2px rgba(37,99,235,0.2);
+    box-shadow: 0 0 0 1px var(--accent), var(--shadow);
 }
 .radio-title, .checkbox-title { font-size: 14px; font-weight: 600; color: var(--text); }
 .radio-desc, .checkbox-desc { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
@@ -442,26 +446,29 @@ textarea.input { min-height: 80px; resize: vertical; }
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
 }
-.subsection-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 16px; }
+.subsection-title { font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 16px; }
 
 /* ============ AUDIT BLOCKS ============ */
 .audit-block {
     background: var(--white);
     border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
     border-radius: var(--radius-lg);
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
 }
 .audit-title {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
-    color: var(--accent);
+    color: var(--primary);
     margin-bottom: 16px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
 }
 
 /* ============ NAVIGATION BUTTONS ============ */
@@ -709,7 +716,8 @@ textarea.input { min-height: 80px; resize: vertical; }
     .section-header { flex-direction: column; }
     .section-number { font-size: 24px; }
 
-    .radio-inline { flex-direction: column; }
+    .radio-group, .checkbox-group { grid-template-columns: 1fr; }
+    .radio-inline { grid-template-columns: 1fr 1fr; }
     .email-form { flex-direction: column; align-items: stretch; }
     .email-form .input { max-width: 100%; }
 
