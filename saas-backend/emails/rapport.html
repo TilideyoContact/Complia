@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votre rapport de conformite Complia</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #F7FAFC; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #F7FAFC;">
+    <tr>
+      <td align="center" style="padding: 40px 16px;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background-color: #FFFFFF; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+
+          <!-- Header -->
+          <tr>
+            <td style="background-color: #0F1E3C; padding: 32px 40px; text-align: center;">
+              <h1 style="margin: 0; color: #FFFFFF; font-size: 24px; font-weight: 700;">COMPLIA</h1>
+              <p style="margin: 8px 0 0; color: #94A3B8; font-size: 14px;">Rapport de conformite EU AI Act</p>
+            </td>
+          </tr>
+
+          <!-- Score Gauge -->
+          <tr>
+            <td style="padding: 40px 40px 24px; text-align: center;">
+              <h2 style="margin: 0 0 24px; color: #0F1E3C; font-size: 20px;">Bonjour {{name}}, voici votre resultat</h2>
+
+              <!-- Score Circle -->
+              <table role="presentation" cellpadding="0" cellspacing="0" align="center">
+                <tr>
+                  <td style="width: 140px; height: 140px; border-radius: 50%; border: 8px solid {{riskColor}}; text-align: center; vertical-align: middle;">
+                    <span style="font-size: 42px; font-weight: 700; color: {{riskColor}};">{{scoreFinal}}</span>
+                    <span style="font-size: 18px; color: #A0AEC0;">/{{maxScore}}</span>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Risk Badge -->
+              <table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin-top: 16px;">
+                <tr>
+                  <td style="background-color: {{riskColor}}; color: #FFFFFF; padding: 6px 20px; border-radius: 20px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
+                    Risque {{riskLevel}}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Top 3 Alerts -->
+          <tr>
+            <td style="padding: 0 40px 32px;">
+              <h3 style="margin: 0 0 16px; color: #0F1E3C; font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+                Alertes prioritaires
+              </h3>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="8">
+                {{alertsHtml}}
+              </table>
+            </td>
+          </tr>
+
+          <!-- Recommended Offer -->
+          <tr>
+            <td style="padding: 0 40px 32px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, #EBF8FF 0%, #E9D8FD 100%); border-radius: 8px; overflow: hidden;">
+                <tr>
+                  <td style="padding: 24px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td>
+                          <span style="display: inline-block; background-color: #2563EB; color: #FFFFFF; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">
+                            Recommande pour vous
+                          </span>
+                          <h3 style="margin: 12px 0 8px; color: #0F1E3C; font-size: 20px; font-weight: 700;">
+                            {{offerName}}
+                          </h3>
+                          <p style="margin: 0 0 4px; color: #2563EB; font-size: 24px; font-weight: 700;">
+                            {{offerPrice}}
+                          </p>
+                          <p style="margin: 0; color: #4A5568; font-size: 14px; line-height: 1.5;">
+                            {{offerDescription}}
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- CTA -->
+          <tr>
+            <td style="padding: 0 40px 16px; text-align: center;">
+              <a href="{{ctaUrl}}" style="display: inline-block; background-color: #2563EB; color: #FFFFFF; text-decoration: none; padding: 14px 32px; border-radius: 6px; font-size: 16px; font-weight: 600;">
+                Reserver un appel decouverte gratuit (20 min)
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 0 40px 32px; text-align: center;">
+              <a href="mailto:contact@complia.eu" style="color: #2563EB; font-size: 14px; text-decoration: none;">
+                Nous contacter par email
+              </a>
+            </td>
+          </tr>
+
+          <!-- Price Comparator -->
+          <tr>
+            <td style="padding: 0 40px 32px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #F7FAFC; border-radius: 8px;">
+                <tr>
+                  <td style="padding: 20px 24px;">
+                    <p style="margin: 0 0 12px; color: #0F1E3C; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Comparatif marche</p>
+                    <table role="presentation" width="100%" cellpadding="4" cellspacing="0">
+                      <tr>
+                        <td style="color: #A0AEC0; font-size: 13px; text-decoration: line-through;">Avocats specialises</td>
+                        <td style="color: #A0AEC0; font-size: 13px; text-align: right; text-decoration: line-through;">5 000 - 15 000 EUR</td>
+                      </tr>
+                      <tr>
+                        <td style="color: #A0AEC0; font-size: 13px; text-decoration: line-through;">Cabinets Big Four</td>
+                        <td style="color: #A0AEC0; font-size: 13px; text-align: right; text-decoration: line-through;">20 000 - 50 000 EUR</td>
+                      </tr>
+                      <tr>
+                        <td style="color: #38A169; font-size: 14px; font-weight: 600;">Complia</td>
+                        <td style="color: #38A169; font-size: 14px; font-weight: 600; text-align: right;">A partir de 990 EUR</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Deductibility notice -->
+          <tr>
+            <td style="padding: 0 40px 32px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-left: 3px solid #38A169; background-color: #F0FFF4;">
+                <tr>
+                  <td style="padding: 12px 16px;">
+                    <p style="margin: 0; color: #276749; font-size: 13px;">
+                      <strong>Bon a savoir :</strong> Le cout du diagnostic est deductible de tout pack conformite signe sous 30 jours.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #F7FAFC; padding: 24px 40px; border-top: 1px solid #E2E8F0;">
+              <p style="margin: 0 0 8px; color: #A0AEC0; font-size: 12px; text-align: center;">
+                Complia SAS - Conformite EU AI Act (Reglement (UE) 2024/1689)
+              </p>
+              <p style="margin: 0 0 8px; color: #A0AEC0; font-size: 12px; text-align: center;">
+                Ce rapport est fourni a titre informatif et ne constitue pas un avis juridique.
+              </p>
+              <p style="margin: 0; color: #A0AEC0; font-size: 12px; text-align: center;">
+                <a href="{{baseUrl}}/mentions-legales" style="color: #A0AEC0;">Mentions legales</a> |
+                <a href="mailto:dpo@complia.eu" style="color: #A0AEC0;">Contact DPO</a>
+              </p>
+              <p style="margin: 8px 0 0; color: #CBD5E0; font-size: 11px; text-align: center;">
+                &copy; {{year}} Complia. Tous droits reserves.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ce que le diagnostic complet revele en plus</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #F7FAFC; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #F7FAFC;">
+    <tr>
+      <td align="center" style="padding: 40px 16px;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background-color: #FFFFFF; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+
+          <!-- Header -->
+          <tr>
+            <td style="background-color: #0F1E3C; padding: 24px 40px; text-align: center;">
+              <h1 style="margin: 0; color: #FFFFFF; font-size: 22px; font-weight: 700;">COMPLIA</h1>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="padding: 40px;">
+              <h2 style="margin: 0 0 8px; color: #0F1E3C; font-size: 20px; font-weight: 600;">
+                {{name}}, votre pre-audit n'est que la surface.
+              </h2>
+              <p style="margin: 0 0 24px; color: #718096; font-size: 14px;">
+                Votre score : <strong style="color: {{riskColor}};">{{scoreFinal}}</strong> | Niveau : <strong style="color: {{riskColor}};">{{riskLevel}}</strong>
+              </p>
+
+              <p style="margin: 0 0 16px; color: #4A5568; font-size: 15px; line-height: 1.7;">
+                Votre pre-audit a identifie votre niveau d'exposition global. Mais un <strong>diagnostic complet</strong> revele bien davantage :
+              </p>
+
+              <!-- What diagnostic reveals -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 24px;">
+                <tr>
+                  <td style="padding: 16px; background-color: #EBF8FF; border-radius: 8px; margin-bottom: 8px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td width="40" style="vertical-align: top; color: #2563EB; font-size: 20px; font-weight: 700;">1.</td>
+                        <td>
+                          <strong style="color: #0F1E3C;">Scoring par dimension de conformite</strong>
+                          <p style="margin: 4px 0 0; color: #4A5568; font-size: 13px;">Documentation technique, QMS, surveillance humaine, FRIA... Chaque dimension est evaluee independamment selon votre role ({{role}}).</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr><td style="height: 8px;"></td></tr>
+                <tr>
+                  <td style="padding: 16px; background-color: #FFF5F5; border-radius: 8px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td width="40" style="vertical-align: top; color: #E53E3E; font-size: 20px; font-weight: 700;">2.</td>
+                        <td>
+                          <strong style="color: #0F1E3C;">Detection approfondie Art. 5</strong>
+                          <p style="margin: 4px 0 0; color: #4A5568; font-size: 13px;">Les 8 pratiques interdites sont analysees une par une. Le pre-audit n'en couvre que les principales.</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr><td style="height: 8px;"></td></tr>
+                <tr>
+                  <td style="padding: 16px; background-color: #F0FFF4; border-radius: 8px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td width="40" style="vertical-align: top; color: #38A169; font-size: 20px; font-weight: 700;">3.</td>
+                        <td>
+                          <strong style="color: #0F1E3C;">Plan d'action priorise</strong>
+                          <p style="margin: 4px 0 0; color: #4A5568; font-size: 13px;">Un plan de remediation concret, priorise par niveau de risque et echeance reglementaire, avec les articles applicables.</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Offer -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border: 2px solid #2563EB; border-radius: 8px; margin-bottom: 24px;">
+                <tr>
+                  <td style="padding: 20px 24px;">
+                    <p style="margin: 0 0 4px; color: #2563EB; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Recommande pour votre profil</p>
+                    <p style="margin: 0 0 4px; color: #0F1E3C; font-size: 18px; font-weight: 700;">{{offerName}}</p>
+                    <p style="margin: 0; color: #2563EB; font-size: 20px; font-weight: 700;">{{offerPrice}}</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- CTA -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center">
+                    <a href="{{ctaUrl}}" style="display: inline-block; background-color: #2563EB; color: #FFFFFF; text-decoration: none; padding: 14px 32px; border-radius: 6px; font-size: 16px; font-weight: 600;">
+                      Echanger avec un expert (20 min, gratuit)
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #F7FAFC; padding: 24px 40px; border-top: 1px solid #E2E8F0;">
+              <p style="margin: 0 0 8px; color: #A0AEC0; font-size: 12px; text-align: center;">
+                Vous recevez cet email car vous avez realise un diagnostic sur complia.eu et consenti a recevoir nos communications.
+              </p>
+              <p style="margin: 0; color: #A0AEC0; font-size: 12px; text-align: center;">
+                <a href="mailto:dpo@complia.eu" style="color: #A0AEC0;">Se desinscrire</a> |
+                <a href="{{baseUrl}}/mentions-legales" style="color: #A0AEC0;">Mentions legales</a>
+              </p>
+              <p style="margin: 8px 0 0; color: #CBD5E0; font-size: 11px; text-align: center;">&copy; {{year}} Complia</p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

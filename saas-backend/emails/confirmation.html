@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votre diagnostic Complia est pret</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #F7FAFC; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #F7FAFC;">
+    <tr>
+      <td align="center" style="padding: 40px 16px;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background-color: #FFFFFF; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+
+          <!-- Header -->
+          <tr>
+            <td style="background-color: #0F1E3C; padding: 32px 40px; text-align: center;">
+              <h1 style="margin: 0; color: #FFFFFF; font-size: 24px; font-weight: 700; letter-spacing: -0.5px;">COMPLIA</h1>
+              <p style="margin: 8px 0 0; color: #94A3B8; font-size: 14px;">Conformite EU AI Act</p>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="padding: 40px;">
+              <h2 style="margin: 0 0 16px; color: #0F1E3C; font-size: 22px; font-weight: 600;">
+                Bonjour {{name}},
+              </h2>
+
+              <p style="margin: 0 0 24px; color: #4A5568; font-size: 16px; line-height: 1.6;">
+                Merci d'avoir realise votre pre-audit de conformite EU AI Act avec Complia. Votre diagnostic est desormais disponible.
+              </p>
+
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #EBF8FF; border-radius: 8px; margin-bottom: 24px;">
+                <tr>
+                  <td style="padding: 20px 24px;">
+                    <p style="margin: 0; color: #2B6CB0; font-size: 14px; font-weight: 600;">CE QUE VOUS TROUVEREZ DANS VOTRE DIAGNOSTIC :</p>
+                    <ul style="margin: 12px 0 0; padding-left: 20px; color: #4A5568; font-size: 14px; line-height: 1.8;">
+                      <li>Votre score de risque global</li>
+                      <li>Les roles detectes au sens de l'AI Act (Art. 3)</li>
+                      <li>Les alertes prioritaires identifiees</li>
+                      <li>La classification de vos systemes IA</li>
+                      <li>Une offre d'accompagnement personnalisee</li>
+                    </ul>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- CTA -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center" style="padding: 8px 0 32px;">
+                    <a href="{{baseUrl}}/resultats" style="display: inline-block; background-color: #2563EB; color: #FFFFFF; text-decoration: none; padding: 14px 32px; border-radius: 6px; font-size: 16px; font-weight: 600;">
+                      Consulter mon diagnostic
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+              <hr style="border: none; border-top: 1px solid #E2E8F0; margin: 0 0 24px;">
+
+              <p style="margin: 0 0 16px; color: #4A5568; font-size: 14px; line-height: 1.6;">
+                <strong>Besoin d'aller plus loin ?</strong> Nos experts sont disponibles pour un appel decouverte gratuit de 20 minutes afin d'analyser vos resultats et definir vos prochaines etapes.
+              </p>
+
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center">
+                    <a href="{{baseUrl}}/rdv/decouverte" style="display: inline-block; background-color: #FFFFFF; color: #2563EB; text-decoration: none; padding: 12px 28px; border-radius: 6px; font-size: 14px; font-weight: 600; border: 2px solid #2563EB;">
+                      Reserver un appel gratuit
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #F7FAFC; padding: 24px 40px; border-top: 1px solid #E2E8F0;">
+              <p style="margin: 0 0 8px; color: #A0AEC0; font-size: 12px; text-align: center;">
+                Complia SAS - Conformite EU AI Act (Reglement (UE) 2024/1689)
+              </p>
+              <p style="margin: 0 0 8px; color: #A0AEC0; font-size: 12px; text-align: center;">
+                Cet email vous a ete envoye car vous avez realise un diagnostic sur complia.eu
+              </p>
+              <p style="margin: 0; color: #A0AEC0; font-size: 12px; text-align: center;">
+                <a href="{{baseUrl}}/mentions-legales" style="color: #A0AEC0;">Mentions legales</a> |
+                <a href="{{baseUrl}}/cgv" style="color: #A0AEC0;">CGV</a> |
+                <a href="mailto:dpo@complia.eu" style="color: #A0AEC0;">Contact DPO</a>
+              </p>
+              <p style="margin: 8px 0 0; color: #CBD5E0; font-size: 11px; text-align: center;">
+                &copy; {{year}} Complia. Tous droits reserves.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

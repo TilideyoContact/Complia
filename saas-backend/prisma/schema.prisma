@@ -1,0 +1,226 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── ENUMS ────────────────────────────────────────────────────────────────────
+
+enum Role {
+  FOURNISSEUR
+  DEPLOYEUR
+  IMPORTATEUR
+  DISTRIBUTEUR
+  INDETERMINE
+}
+
+enum RiskLevel {
+  FAIBLE
+  MODERE
+  ELEVE
+  CRITIQUE
+}
+
+enum ComplianceLevel {
+  CONFORME
+  CONDITIONNEL
+  NON_CONFORME
+}
+
+enum SessionStatus {
+  IN_PROGRESS
+  COMPLETED
+  ABANDONED
+  EXPIRED
+}
+
+enum SessionType {
+  PRE_AUDIT
+  DIAGNOSTIC
+}
+
+enum LeadStatus {
+  NEW
+  PRE_AUDIT_DONE
+  APPOINTMENT_SCHEDULED
+  QUALIFIED
+  PROPOSAL_SENT
+  CLIENT
+  LOST
+}
+
+enum AppointmentStatus {
+  SCHEDULED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+enum PriceType {
+  ONE_TIME
+  MONTHLY
+  CUSTOM
+}
+
+// ─── MODELS ───────────────────────────────────────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  firstName     String
+  lastName      String?
+  phone         String?
+  company       String?
+  sector        String?
+  companySize   String?
+  revenue       String?
+  roles         Role[]    @default([])
+  gdprConsent   Boolean   @default(false)
+  marketingConsent Boolean @default(false)
+  consentDate   DateTime?
+  leadStatus    LeadStatus @default(NEW)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  sessions      Session[]
+  appointments  Appointment[]
+
+  @@index([email])
+  @@index([leadStatus])
+  @@index([createdAt])
+}
+
+model Session {
+  id            String        @id @default(cuid())
+  userId        String?
+  user          User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+  type          SessionType   @default(PRE_AUDIT)
+  status        SessionStatus @default(IN_PROGRESS)
+  currentStep   Int           @default(0)
+  totalSteps    Int           @default(15)
+  detectedRoles Role[]        @default([])
+  sector        String?
+  companySize   String?
+  metadata      Json?
+  startedAt     DateTime      @default(now())
+  completedAt   DateTime?
+  expiresAt     DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  answers       Answer[]
+  scores        Score[]
+  recommendations Recommendation[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([type, status])
+  @@index([createdAt])
+}
+
+model Answer {
+  id            String    @id @default(cuid())
+  sessionId     String
+  session       Session   @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  questionId    String
+  questionCode  String
+  section       Int
+  value         Json
+  rawPoints     Float     @default(0)
+  dimension     String?
+  isCritical    Boolean   @default(false)
+  alertMessage  String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@unique([sessionId, questionId])
+  @@index([sessionId])
+  @@index([questionCode])
+}
+
+model Score {
+  id                  String          @id @default(cuid())
+  sessionId           String
+  session             Session         @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  type                SessionType     @default(PRE_AUDIT)
+  scoreBrut           Float           @default(0)
+  scoreAjuste         Float           @default(0)
+  scoreFinal          Float           @default(0)
+  maxPossible         Float           @default(10)
+  riskLevel           RiskLevel       @default(FAIBLE)
+  complianceLevel     ComplianceLevel?
+  multiplicateurRole  Float           @default(1)
+  multiplicateurSecteur Float         @default(1)
+  multiplicateurTaille Float          @default(1)
+  hasKillSwitch       Boolean         @default(false)
+  killSwitchDetails   Json?
+  dimensions          Json?
+  alerts              Json?
+  detectedRoles       Role[]          @default([])
+  calculatedAt        DateTime        @default(now())
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
+
+  @@index([sessionId])
+  @@index([riskLevel])
+}
+
+model Recommendation {
+  id              String    @id @default(cuid())
+  sessionId       String
+  session         Session   @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  primaryOfferId  String
+  primaryOffer    Offer     @relation("PrimaryRecommendation", fields: [primaryOfferId], references: [id])
+  secondaryOfferId String?
+  secondaryOffer  Offer?    @relation("SecondaryRecommendation", fields: [secondaryOfferId], references: [id])
+  argumentaire    String
+  sectorArgument  String?
+  urgencyMessage  String?
+  createdAt       DateTime  @default(now())
+
+  @@index([sessionId])
+}
+
+model Offer {
+  id            String    @id @default(cuid())
+  slug          String    @unique
+  name          String
+  description   String
+  priceAmount   Int       // Centimes, 0 = "sur devis"
+  priceDisplay  String    // e.g. "990 EUR HT", "Sur devis"
+  priceType     PriceType @default(ONE_TIME)
+  targetRoles   Role[]    @default([])
+  minScore      Int       @default(0)
+  maxScore      Int       @default(100)
+  features      Json?
+  isActive      Boolean   @default(true)
+  sortOrder     Int       @default(0)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  primaryRecommendations   Recommendation[] @relation("PrimaryRecommendation")
+  secondaryRecommendations Recommendation[] @relation("SecondaryRecommendation")
+
+  @@index([slug])
+  @@index([isActive])
+}
+
+model Appointment {
+  id              String            @id @default(cuid())
+  userId          String
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type            String            // "decouverte" | "diagnostic"
+  calendlyEventId String?           @unique
+  scheduledAt     DateTime?
+  status          AppointmentStatus @default(SCHEDULED)
+  notes           String?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  @@index([userId])
+  @@index([status])
+  @@index([scheduledAt])
+}

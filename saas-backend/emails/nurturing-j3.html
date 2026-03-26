@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'echeance AI Act approche</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #F7FAFC; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #F7FAFC;">
+    <tr>
+      <td align="center" style="padding: 40px 16px;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background-color: #FFFFFF; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+
+          <!-- Header with urgency -->
+          <tr>
+            <td style="background-color: #0F1E3C; padding: 24px 40px; text-align: center;">
+              <h1 style="margin: 0; color: #FFFFFF; font-size: 22px; font-weight: 700;">COMPLIA</h1>
+            </td>
+          </tr>
+
+          <!-- Countdown Banner -->
+          <tr>
+            <td style="background-color: #E53E3E; padding: 16px 40px; text-align: center;">
+              <p style="margin: 0; color: #FFFFFF; font-size: 28px; font-weight: 700; letter-spacing: 1px;">
+                {{daysRemaining}} JOURS
+              </p>
+              <p style="margin: 4px 0 0; color: #FED7D7; font-size: 14px;">
+                avant l'entree en application des obligations systemes haut risque (2 aout 2026)
+              </p>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="padding: 40px;">
+              <h2 style="margin: 0 0 16px; color: #0F1E3C; font-size: 20px; font-weight: 600;">
+                {{name}}, "J'ai le temps" est l'objection la plus dangereuse.
+              </h2>
+
+              <p style="margin: 0 0 20px; color: #4A5568; font-size: 15px; line-height: 1.7;">
+                Avec un score de <strong style="color: {{riskColor}};">{{scoreFinal}}</strong> (niveau <strong style="color: {{riskColor}};">{{riskLevel}}</strong>), votre organisation presente des ecarts de conformite qui necessitent du temps pour etre corriges.
+              </p>
+
+              <!-- Why you don't have time -->
+              <h3 style="margin: 0 0 16px; color: #E53E3E; font-size: 16px; font-weight: 600;">
+                Pourquoi le temps joue contre vous :
+              </h3>
+
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 24px;">
+                <tr>
+                  <td style="padding: 12px 16px; border-left: 3px solid #E53E3E; background-color: #FFF5F5; margin-bottom: 8px; border-radius: 0 4px 4px 0;">
+                    <strong style="color: #C53030;">Fevrier 2025 :</strong>
+                    <span style="color: #4A5568;"> les pratiques interdites (Art. 5) sont deja en vigueur. Amende : 35M EUR ou 7% du CA.</span>
+                  </td>
+                </tr>
+                <tr><td style="height: 8px;"></td></tr>
+                <tr>
+                  <td style="padding: 12px 16px; border-left: 3px solid #F97316; background-color: #FFFAF0; border-radius: 0 4px 4px 0;">
+                    <strong style="color: #C05621;">Aout 2025 :</strong>
+                    <span style="color: #4A5568;"> les obligations GPAI (Art. 51-55) entrent en vigueur.</span>
+                  </td>
+                </tr>
+                <tr><td style="height: 8px;"></td></tr>
+                <tr>
+                  <td style="padding: 12px 16px; border-left: 3px solid #E53E3E; background-color: #FFF5F5; border-radius: 0 4px 4px 0;">
+                    <strong style="color: #C53030;">Aout 2026 :</strong>
+                    <span style="color: #4A5568;"> les obligations systemes haut risque (Art. 6-27) s'appliquent. Amende : 15M EUR ou 3% du CA.</span>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Time needed -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #EBF8FF; border-radius: 8px; margin-bottom: 24px;">
+                <tr>
+                  <td style="padding: 20px 24px;">
+                    <p style="margin: 0 0 8px; color: #2B6CB0; font-size: 14px; font-weight: 600;">DELAIS MOYENS DE MISE EN CONFORMITE :</p>
+                    <table role="presentation" width="100%" cellpadding="4" cellspacing="0">
+                      <tr>
+                        <td style="color: #4A5568; font-size: 13px;">Diagnostic + cartographie</td>
+                        <td style="color: #2B6CB0; font-size: 13px; text-align: right; font-weight: 600;">2 a 4 semaines</td>
+                      </tr>
+                      <tr>
+                        <td style="color: #4A5568; font-size: 13px;">Plan de remediation</td>
+                        <td style="color: #2B6CB0; font-size: 13px; text-align: right; font-weight: 600;">1 a 2 mois</td>
+                      </tr>
+                      <tr>
+                        <td style="color: #4A5568; font-size: 13px;">Implementation complete</td>
+                        <td style="color: #2B6CB0; font-size: 13px; text-align: right; font-weight: 600;">3 a 9 mois</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" style="border-top: 1px solid #BEE3F8; padding-top: 8px;">
+                          <strong style="color: #C53030; font-size: 13px;">Total minimal : 4 a 12 mois. Il reste {{daysRemaining}} jours.</strong>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <p style="margin: 0 0 24px; color: #4A5568; font-size: 15px; line-height: 1.7;">
+                Chaque semaine qui passe reduit votre marge de manoeuvre. Commencer maintenant, c'est vous donner les meilleures chances d'etre conforme dans les delais.
+              </p>
+
+              <!-- CTA -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center">
+                    <a href="{{ctaUrl}}" style="display: inline-block; background-color: #E53E3E; color: #FFFFFF; text-decoration: none; padding: 14px 32px; border-radius: 6px; font-size: 16px; font-weight: 600;">
+                      Agir maintenant - Appel gratuit 20 min
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding-top: 12px;">
+                    <p style="margin: 0; color: #A0AEC0; font-size: 13px;">Sans engagement. Un expert analyse votre situation en 20 minutes.</p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #F7FAFC; padding: 24px 40px; border-top: 1px solid #E2E8F0;">
+              <p style="margin: 0 0 8px; color: #A0AEC0; font-size: 12px; text-align: center;">
+                Vous recevez cet email car vous avez realise un diagnostic sur complia.eu et consenti a recevoir nos communications.
+              </p>
+              <p style="margin: 0; color: #A0AEC0; font-size: 12px; text-align: center;">
+                <a href="mailto:dpo@complia.eu" style="color: #A0AEC0;">Se desinscrire</a> |
+                <a href="{{baseUrl}}/mentions-legales" style="color: #A0AEC0;">Mentions legales</a>
+              </p>
+              <p style="margin: 8px 0 0; color: #CBD5E0; font-size: 11px; text-align: center;">&copy; {{year}} Complia</p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
