@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pack Conformite Deployeur — 3 990 EUR HT — Complia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0F1E3C;
+      --red: #E53E3E;
+      --green: #38A169;
+      --orange: #F97316;
+      --blue: #2563EB;
+      --white: #FFFFFF;
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-500: #6B7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+    }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-900);
+      line-height: 1.6;
+    }
+    .header {
+      background: var(--navy);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { color: var(--white); font-size: 24px; font-weight: 800; }
+    .logo span { color: var(--blue); }
+    .header-nav a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      margin-left: 24px;
+    }
+    .header-nav a:hover { color: var(--white); }
+
+    .container { max-width: 800px; margin: 0 auto; padding: 32px 16px; }
+
+    /* HERO */
+    .hero {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 40px 32px;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      margin-bottom: 24px;
+      position: relative;
+      border: 2px solid var(--blue);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--gray-500);
+      margin-bottom: 20px;
+    }
+    .hero-price {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .hero-price small { font-size: 18px; font-weight: 500; color: var(--gray-500); }
+    .hero-monthly {
+      font-size: 15px;
+      color: var(--gray-500);
+      margin-bottom: 24px;
+    }
+    .hero-cta {
+      display: inline-flex;
+      padding: 16px 36px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      background: var(--blue);
+      color: var(--white);
+      transition: all 0.15s;
+    }
+    .hero-cta:hover { background: #1D4ED8; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
+
+    /* SECTION */
+    .section {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      margin-bottom: 24px;
+    }
+    .section h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section h2 .ico {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+    .ico-blue { background: #DBEAFE; color: var(--blue); }
+    .ico-green { background: #D1FAE5; color: var(--green); }
+    .ico-orange { background: #FFEDD5; color: var(--orange); }
+    .ico-red { background: #FEE2E2; color: var(--red); }
+
+    /* INCLUS TABLE */
+    .inclus-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .inclus-table tr {
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .inclus-table tr:last-child { border-bottom: none; }
+    .inclus-table td {
+      padding: 14px 12px;
+      font-size: 14px;
+      vertical-align: top;
+    }
+    .inclus-table td:first-child {
+      font-weight: 600;
+      color: var(--navy);
+      width: 40%;
+    }
+    .inclus-table td:last-child {
+      color: var(--gray-700);
+    }
+    .art-ref {
+      display: inline-block;
+      background: var(--gray-100);
+      color: var(--gray-700);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-top: 4px;
+    }
+
+    /* PERSONA */
+    .persona-card {
+      background: var(--gray-50);
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+    .persona-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .persona-desc {
+      font-size: 14px;
+      color: var(--gray-700);
+      margin-bottom: 12px;
+    }
+    .persona-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .persona-tag {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: var(--gray-700);
+      font-weight: 500;
+    }
+
+    /* TIMELINE */
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      padding: 20px 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: 10%;
+      right: 10%;
+      height: 3px;
+      background: var(--gray-200);
+      z-index: 0;
+    }
+    .timeline-step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      flex: 1;
+    }
+    .timeline-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+    }
+    .timeline-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+    .timeline-desc {
+      font-size: 11px;
+      color: var(--gray-500);
+    }
+
+    /* URGENCY */
+    .urgency-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .urgency-card {
+      flex: 1;
+      min-width: 200px;
+      background: var(--gray-50);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+    }
+    .urgency-date {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--red);
+      margin-bottom: 4px;
+    }
+    .urgency-label {
+      font-size: 12px;
+      color: var(--gray-500);
+    }
+
+    /* DEDUCTIBLE */
+    .deductible-badge {
+      background: #ECFDF5;
+      border: 2px solid #A7F3D0;
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .deductible-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 20px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .deductible-text h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #065F46;
+      margin-bottom: 2px;
+    }
+    .deductible-text p {
+      font-size: 13px;
+      color: #047857;
+    }
+
+    /* FAQ */
+    .faq-item {
+      border-bottom: 1px solid var(--gray-100);
+      padding: 16px 0;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-question .arrow {
+      font-size: 18px;
+      transition: transform 0.2s;
+      color: var(--gray-500);
+    }
+    .faq-answer {
+      font-size: 14px;
+      color: var(--gray-700);
+      margin-top: 10px;
+      line-height: 1.6;
+      display: none;
+    }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .arrow { transform: rotate(180deg); }
+
+    /* CROSS-SELL */
+    .cross-sell-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .cross-card {
+      border: 2px solid var(--gray-100);
+      border-radius: 12px;
+      padding: 20px;
+      transition: border-color 0.15s;
+    }
+    .cross-card:hover { border-color: var(--blue); }
+    .cross-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .cross-price {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+    .cross-price span { font-size: 13px; font-weight: 500; color: var(--gray-500); }
+    .cross-desc {
+      font-size: 13px;
+      color: var(--gray-700);
+      margin-bottom: 12px;
+    }
+    .cross-link {
+      font-size: 13px;
+      color: var(--blue);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .cross-link:hover { text-decoration: underline; }
+
+    /* CTA FOOTER */
+    .cta-footer {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .cta-footer h3 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .cta-footer p {
+      font-size: 15px;
+      color: var(--gray-500);
+      margin-bottom: 20px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-footer .btn-row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+    .btn-primary { background: var(--blue); color: var(--white); }
+    .btn-outline { background: var(--white); color: var(--navy); border: 2px solid var(--gray-200); }
+
+    @media (max-width: 640px) {
+      .container { padding: 16px 12px; }
+      .hero, .section { padding: 24px 18px; }
+      .hero h1 { font-size: 24px; }
+      .hero-price { font-size: 36px; }
+      .timeline { flex-direction: column; gap: 16px; }
+      .timeline::before { display: none; }
+      .cross-sell-grid { grid-template-columns: 1fr; }
+      .urgency-row { flex-direction: column; }
+      .cta-footer .btn-row { flex-direction: column; align-items: center; }
+      .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">Complia<span>.</span></div>
+    <nav class="header-nav">
+      <a href="offres.html">Toutes les offres</a>
+      <a href="#calendly">Prendre RDV</a>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-badge">BEST-SELLER</div>
+      <h1>Pack Conformite Deployeur</h1>
+      <p class="hero-subtitle">Toutes vos obligations AI Act couvertes, livrees en 15-20 jours.</p>
+      <div class="hero-price">3 990 EUR <small>HT</small></div>
+      <div class="hero-monthly">ou 1 330 EUR x 3 sans frais</div>
+      <a href="#calendly" class="hero-cta">Reserver un appel decouverte gratuit</a>
+    </section>
+
+    <!-- CE QUI EST INCLUS -->
+    <section class="section">
+      <h2><span class="ico ico-blue">&#9776;</span> Ce qui est inclus</h2>
+      <table class="inclus-table">
+        <tr>
+          <td>Diagnostic Flash<br><span class="art-ref">Inclus ou deduit</span></td>
+          <td>Identification de votre role, inventaire IA, classification des systemes, score de risque /10. Rapport Flash 5-8 pages.</td>
+        </tr>
+        <tr>
+          <td>Registre des systemes IA<br><span class="art-ref">Art. 26</span></td>
+          <td>Document cree et rempli, conforme aux exigences du reglement. Repertorie chaque systeme IA, son usage, sa classification et son fournisseur.</td>
+        </tr>
+        <tr>
+          <td>Procedures de surveillance humaine<br><span class="art-ref">Art. 26(1) / Art. 14</span></td>
+          <td>Documentation Human-in-the-loop pour chaque systeme. Definit qui supervise, comment intervenir, quels seuils declenchent une revue humaine.</td>
+        </tr>
+        <tr>
+          <td>Fiches information utilisateurs<br><span class="art-ref">Art. 26(6)</span></td>
+          <td>Une fiche par systeme IA, informant les utilisateurs finaux qu'ils interagissent avec une IA, ses capacites et ses limites.</td>
+        </tr>
+        <tr>
+          <td>Procedure conservation des logs<br><span class="art-ref">Art. 26(5)</span></td>
+          <td>Protocole de conservation des journaux generes automatiquement par vos systemes IA, minimum 6 mois, conforme aux exigences.</td>
+        </tr>
+        <tr>
+          <td>Verification fournisseurs<br><span class="art-ref">Art. 26(1)</span></td>
+          <td>Analyse basique de conformite de vos editeurs/fournisseurs de solutions IA. Verification de la documentation technique fournie.</td>
+        </tr>
+        <tr>
+          <td>Formation equipe cle<br><span class="art-ref">Art. 4</span></td>
+          <td>Session de 2 heures pratique avec vos equipes concernees. Comprendre les obligations, savoir utiliser les documents livres.</td>
+        </tr>
+        <tr>
+          <td>Call avec votre avocat</td>
+          <td>Coordination avec votre conseil juridique pour validation des documents de conformite.</td>
+        </tr>
+        <tr>
+          <td>Dossier de Conformite complet</td>
+          <td>Document unique 20+ pages regroupant l'ensemble des livrables, pret pour presentation en cas d'audit ou de controle.</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- POUR QUI -->
+    <section class="section">
+      <h2><span class="ico ico-green">&#9679;</span> Pour qui ?</h2>
+      <div class="persona-card">
+        <div class="persona-title">Le Deployeur d'IA qui veut dormir tranquille</div>
+        <div class="persona-desc">
+          Vous utilisez des systemes d'intelligence artificielle dans vos operations (outils SaaS, chatbots, scoring, automatisation RH, IA generative...) mais vous ne les developpez pas vous-meme. Vous etes responsable de leur usage conforme au sein de votre organisation.
+        </div>
+        <div class="persona-tags">
+          <span class="persona-tag">DSI / CTO</span>
+          <span class="persona-tag">Direction Juridique</span>
+          <span class="persona-tag">Direction Operations</span>
+          <span class="persona-tag">ETI 250-5000 salaries</span>
+          <span class="persona-tag">PME innovantes</span>
+          <span class="persona-tag">Scale-ups</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="section">
+      <h2><span class="ico ico-blue">&#9200;</span> Timeline de livraison</h2>
+      <div class="timeline">
+        <div class="timeline-step">
+          <div class="timeline-dot">1</div>
+          <div class="timeline-label">Jour 1-3</div>
+          <div class="timeline-desc">Kick-off + entretiens de cadrage</div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-dot">2</div>
+          <div class="timeline-label">Jour 4-8</div>
+          <div class="timeline-desc">Inventaire, classification, analyse fournisseurs</div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-dot">3</div>
+          <div class="timeline-label">Jour 9-14</div>
+          <div class="timeline-desc">Redaction des livrables + registre</div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-dot">4</div>
+          <div class="timeline-label">Jour 15-20</div>
+          <div class="timeline-desc">Livraison + formation + restitution</div>
+        </div>
+      </div>
+      <p style="text-align: center; font-size: 13px; color: var(--gray-500); margin-top: 8px;">
+        Investissement client : 6-8 heures sur l'ensemble du projet
+      </p>
+    </section>
+
+    <!-- POURQUOI MAINTENANT -->
+    <section class="section">
+      <h2><span class="ico ico-red">&#9888;</span> Pourquoi maintenant ?</h2>
+      <div class="urgency-row">
+        <div class="urgency-card">
+          <div class="urgency-date">2 fev. 2025</div>
+          <div class="urgency-label">Pratiques interdites -- EN VIGUEUR</div>
+        </div>
+        <div class="urgency-card">
+          <div class="urgency-date">2 aout 2025</div>
+          <div class="urgency-label">Obligations GPAI -- EN VIGUEUR</div>
+        </div>
+        <div class="urgency-card" style="border: 2px solid var(--red);">
+          <div class="urgency-date">2 aout 2026</div>
+          <div class="urgency-label" style="color: var(--red); font-weight: 700;">Systemes haut risque -- CRITIQUE</div>
+        </div>
+      </div>
+      <p style="font-size: 14px; color: var(--gray-700); margin-top: 16px; text-align: center;">
+        Avec un delai de livraison de 15-20 jours, commencer maintenant vous laisse une marge confortable.
+        <strong>Attendre, c'est risquer de ne pas etre pret.</strong>
+      </p>
+    </section>
+
+    <!-- DEDUCTIBLE BADGE -->
+    <div class="deductible-badge">
+      <div class="deductible-icon">&#8364;</div>
+      <div class="deductible-text">
+        <h3>Diagnostic deductible sous 30 jours</h3>
+        <p>Si vous avez deja realise un Diagnostic Flash (990 EUR) ou Strategique (2 490 EUR), son montant est integralement deduit du prix de ce pack si vous signez dans les 30 jours suivant la livraison du diagnostic.</p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <section class="section">
+      <h2><span class="ico ico-orange">?</span> Questions frequentes</h2>
+
+      <div class="faq-item open">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Que se passe-t-il si un auditeur identifie un manquement ?
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="faq-answer">
+          Notre Garantie "Audit Ready" couvre cette situation. Si un auditeur identifie un manquement sur un element couvert par notre prestation, nous corrigeons gratuitement le document ou la procedure concernee. Cette garantie est valable 12 mois apres la livraison.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Ce pack suffit-il si j'ai des systemes a haut risque ?
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="faq-answer">
+          Le Pack Conformite Deployeur couvre les obligations de base pour tous les deployeurs. Si vous operez des systemes classes "haut risque" (RH, credit scoring, sante, education...), le Pack Deployeur+ (6 990 EUR) est recommande car il inclut la FRIA obligatoire (Art. 27) et un audit blanc.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Puis-je payer en plusieurs fois ?
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="faq-answer">
+          Oui, nous proposons un paiement en 3 fois sans frais : 1 330 EUR a la commande, 1 330 EUR a mi-parcours, et 1 330 EUR a la livraison. Le paiement se fait par carte bancaire via Stripe.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          En quoi Complia est-il different d'un cabinet d'avocats ou d'un Big Four ?
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="faq-answer">
+          Les cabinets d'avocats (5 000-15 000 EUR) maitrisent le droit mais pas la technique IA. Les Big Four (20 000-50 000 EUR) sont generalistes et lents. Complia combine expertise technique des systemes IA et maitrise juridique de l'AI Act, pour un resultat livre en 15-20 jours au lieu de 3-6 mois, a un prix significativement inferieur.
+        </div>
+      </div>
+    </section>
+
+    <!-- CROSS-SELL -->
+    <section class="section">
+      <h2><span class="ico ico-blue">&#10138;</span> Allez plus loin</h2>
+      <div class="cross-sell-grid">
+        <div class="cross-card">
+          <div class="cross-title">Pack Deployeur+</div>
+          <div class="cross-price">6 990 EUR <span>HT</span></div>
+          <div class="cross-desc">Tout le Pack Conformite + FRIA complete + audit blanc + politique de gouvernance IA. Ideal si vous operez des systemes a haut risque.</div>
+          <a href="#" class="cross-link">Decouvrir &rarr;</a>
+        </div>
+        <div class="cross-card">
+          <div class="cross-title">Compliance Officer Externalise</div>
+          <div class="cross-price">890 EUR <span>/ mois HT</span></div>
+          <div class="cross-desc">Un responsable conformite IA dedie qui maintient vos documents a jour, realise la veille reglementaire et vous alerte sur les evolutions.</div>
+          <a href="#" class="cross-link">Decouvrir &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FOOTER -->
+    <div class="cta-footer">
+      <h3>Pret a securiser votre conformite ?</h3>
+      <p>Reservez un appel decouverte de 20 minutes, gratuit et sans engagement. Nous analyserons votre situation et vous confirmerons si ce pack est adapte.</p>
+      <div class="btn-row">
+        <a href="#calendly" class="btn btn-primary">Reserver mon appel decouverte</a>
+        <a href="offres.html" class="btn btn-outline">Voir toutes les offres</a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
