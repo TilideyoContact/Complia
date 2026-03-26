@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complia — Conformité EU AI Act | Diagnostic en 5 minutes</title>
+    <meta name="description" content="Votre entreprise utilise l'IA ? Vous êtes peut-être déjà hors-la-loi. Évaluez votre exposition à l'EU AI Act en 5 minutes. Amendes jusqu'à 35M€.">
+    <meta property="og:title" content="Complia — Êtes-vous en conformité avec l'EU AI Act ?">
+    <meta property="og:description" content="Amendes jusqu'à 35M€ ou 7% du CA mondial. Découvrez votre exposition en 5 minutes.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1a1a2e;
+            background: #FFFFFF;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* ===== VARIABLES ===== */
+        :root {
+            --blue-nuit: #0F1E3C;
+            --white: #FFFFFF;
+            --red: #E53E3E;
+            --green: #38A169;
+            --blue-accent: #2563EB;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+            --radius: 12px;
+            --radius-lg: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ===== UTILITY ===== */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .section { padding: 80px 0; }
+        .section-dark { background: var(--blue-nuit); color: var(--white); }
+        .section-light { background: var(--gray-50); }
+        .text-center { text-align: center; }
+        .text-red { color: var(--red); }
+        .text-green { color: var(--green); }
+        .text-blue { color: var(--blue-accent); }
+        .text-muted { color: var(--gray-500); }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .badge-red { background: rgba(229,62,62,0.1); color: var(--red); }
+        .badge-green { background: rgba(56,161,105,0.1); color: var(--green); }
+        .badge-blue { background: rgba(37,99,235,0.1); color: var(--blue-accent); }
+        .badge-orange { background: rgba(249,115,22,0.1); color: #F97316; }
+        .badge-yellow { background: rgba(245,158,11,0.1); color: #D97706; }
+
+        h1, h2, h3, h4, h5 { line-height: 1.2; color: var(--blue-nuit); }
+        .section-dark h1, .section-dark h2, .section-dark h3,
+        .section-dark h4, .section-dark h5 { color: var(--white); }
+        h2.section-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            max-width: 700px;
+            margin: 0 auto 48px;
+        }
+        .section-dark .section-subtitle { color: rgba(255,255,255,0.7); }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .btn-primary {
+            background: var(--red);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(229,62,62,0.4);
+        }
+        .btn-primary:hover {
+            background: #C53030;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(229,62,62,0.5);
+        }
+        .btn-secondary {
+            background: var(--white);
+            color: var(--blue-nuit);
+            border: 2px solid var(--gray-200);
+        }
+        .btn-secondary:hover {
+            border-color: var(--blue-nuit);
+            transform: translateY(-2px);
+        }
+        .btn-outline-white {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .btn-outline-white:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--white);
+        }
+        .btn-lg { padding: 18px 36px; font-size: 1.125rem; border-radius: 10px; }
+        .btn-sm { padding: 10px 20px; font-size: 0.875rem; }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-200);
+            transition: var(--transition);
+        }
+        .navbar.scrolled { box-shadow: var(--shadow); }
+        .navbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--blue-nuit);
+            letter-spacing: -0.02em;
+        }
+        .logo span { color: var(--red); }
+        .nav-links { display: flex; align-items: center; gap: 32px; }
+        .nav-links a {
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--gray-700);
+            transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--blue-nuit); }
+        .nav-cta .btn { padding: 10px 22px; font-size: 0.875rem; }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--blue-nuit);
+            margin: 6px 0;
+            transition: var(--transition);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, #0F1E3C 0%, #1a2d5a 50%, #0F1E3C 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(229,62,62,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero .container { position: relative; z-index: 1; }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(229,62,62,0.15);
+            border: 1px solid rgba(229,62,62,0.3);
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #FC8181;
+            margin-bottom: 24px;
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+        @keyframes pulse-badge {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .hero h1 {
+            font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--white);
+            max-width: 800px;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #FC8181, #E53E3E);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-subtitle {
+            font-size: clamp(1.0625rem, 2vw, 1.25rem);
+            color: rgba(255,255,255,0.8);
+            max-width: 620px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+        .hero-trust {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.7);
+        }
+        .trust-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green);
+        }
+
+        /* ===== URGENCE TIMELINE ===== */
+        .urgence-bar {
+            background: linear-gradient(90deg, #0F1E3C 0%, #1a2d5a 100%);
+            padding: 48px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .countdown-wrapper {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .countdown-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--red);
+            margin-bottom: 12px;
+        }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .countdown-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 16px 20px;
+            min-width: 80px;
+            text-align: center;
+        }
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1;
+        }
+        .countdown-number.red { color: var(--red); }
+        .countdown-unit {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 4px;
+        }
+        .timeline-track {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .timeline-track::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 60px;
+            right: 60px;
+            height: 3px;
+            background: rgba(255,255,255,0.15);
+        }
+        .timeline-progress {
+            position: absolute;
+            top: 20px;
+            left: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--green), var(--green) 50%, var(--red) 100%);
+            width: 50%;
+            z-index: 1;
+        }
+        .timeline-point {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            flex: 1;
+        }
+        .timeline-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        .timeline-dot.done {
+            background: var(--green);
+            color: var(--white);
+        }
+        .timeline-dot.critical {
+            background: var(--red);
+            color: var(--white);
+            animation: pulse-red 2s ease-in-out infinite;
+        }
+        @keyframes pulse-red {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(229,62,62,0.4); }
+            50% { box-shadow: 0 0 0 12px rgba(229,62,62,0); }
+        }
+        .timeline-dot.future {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.5);
+        }
+        .timeline-date {
+            font-size: 0.8125rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+        .timeline-desc {
+            font-size: 0.6875rem;
+            color: rgba(255,255,255,0.5);
+            max-width: 140px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
+        /* ===== CONCERNE ===== */
+        .concerne-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .concerne-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+        }
+        .concerne-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+        .concerne-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .concerne-card:nth-child(1) .concerne-icon { background: rgba(37,99,235,0.1); }
+        .concerne-card:nth-child(2) .concerne-icon { background: rgba(229,62,62,0.1); }
+        .concerne-card:nth-child(3) .concerne-icon { background: rgba(56,161,105,0.1); }
+        .concerne-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
+        .concerne-card p { color: var(--gray-600); font-size: 0.9375rem; margin-bottom: 16px; }
+        .concerne-examples {
+            background: var(--gray-50);
+            border-radius: 8px;
+            padding: 16px;
+        }
+        .concerne-examples span {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--gray-700);
+            display: block;
+            margin-bottom: 8px;
+        }
+        .concerne-examples li {
+            font-size: 0.8125rem;
+            color: var(--gray-600);
+            padding: 2px 0 2px 16px;
+            position: relative;
+        }
+        .concerne-examples li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--blue-accent);
+            font-weight: 700;
+        }
+
+        /* ===== RISQUES ===== */
+        .risques-table-wrapper {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+        }
+        .risques-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .risques-table thead { background: var(--blue-nuit); color: var(--white); }
+        .risques-table th {
+            padding: 16px 24px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-align: left;
+        }
+        .risques-table td {
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--gray-100);
+            font-size: 0.9375rem;
+        }
+        .risques-table tr:last-child td { border-bottom: none; }
+        .risques-table .amende {
+            font-weight: 800;
+            color: var(--red);
+            font-size: 1.125rem;
+        }
+        .risques-alert {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(229,62,62,0.05) 0%, rgba(229,62,62,0.1) 100%);
+            border: 2px solid var(--red);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            position: relative;
+        }
+        .risques-alert::before {
+            content: '!';
+            position: absolute;
+            top: -16px;
+            left: 32px;
+            width: 32px;
+            height: 32px;
+            background: var(--red);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.125rem;
+        }
+        .risques-alert h4 { color: var(--red); font-size: 1.125rem; margin-bottom: 12px; }
+        .risques-alert p { color: var(--gray-700); font-size: 0.9375rem; }
+        .risques-alert strong { color: var(--blue-nuit); }
+
+        /* ===== ROLES ===== */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .role-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .role-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .role-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+        .role-card.fournisseur::before { background: var(--red); }
+        .role-card.deployeur::before { background: var(--blue-accent); }
+        .role-card.importateur::before { background: #F97316; }
+        .role-card.distributeur::before { background: var(--green); }
+        .role-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+        .role-card.fournisseur .role-label { color: var(--red); }
+        .role-card.deployeur .role-label { color: var(--blue-accent); }
+        .role-card.importateur .role-label { color: #F97316; }
+        .role-card.distributeur .role-label { color: var(--green); }
+        .role-card h3 { font-size: 1.125rem; font-weight: 700; margin-bottom: 8px; }
+        .role-card .role-desc { font-size: 0.8125rem; color: var(--gray-500); margin-bottom: 16px; }
+        .role-obligations { margin-bottom: 16px; }
+        .role-obligations li {
+            font-size: 0.8125rem;
+            color: var(--gray-700);
+            padding: 6px 0 6px 20px;
+            position: relative;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .role-obligations li:last-child { border-bottom: none; }
+        .role-obligations li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+        }
+        .role-card.fournisseur .role-obligations li::before { background: var(--red); }
+        .role-card.deployeur .role-obligations li::before { background: var(--blue-accent); }
+        .role-card.importateur .role-obligations li::before { background: #F97316; }
+        .role-card.distributeur .role-obligations li::before { background: var(--green); }
+        .complexity-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .complexity-critical { background: rgba(229,62,62,0.1); color: var(--red); }
+        .complexity-moderate { background: rgba(37,99,235,0.1); color: var(--blue-accent); }
+        .complexity-elevated { background: rgba(249,115,22,0.1); color: #F97316; }
+        .complexity-low { background: rgba(56,161,105,0.1); color: var(--green); }
+
+        /* ===== COMMENT CA MARCHE ===== */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            position: relative;
+        }
+        .steps-grid::before {
+            content: '';
+            position: absolute;
+            top: 36px;
+            left: 15%;
+            right: 15%;
+            height: 2px;
+            background: var(--gray-200);
+        }
+        .step-card { text-align: center; position: relative; }
+        .step-number {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--blue-nuit);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 auto 24px;
+            position: relative;
+            z-index: 2;
+        }
+        .step-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
+        .step-card p { color: var(--gray-600); font-size: 0.9375rem; max-width: 280px; margin: 0 auto; }
+        .step-tag {
+            margin-top: 16px;
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .step-tag.free { background: rgba(56,161,105,0.1); color: var(--green); }
+        .step-tag.paid { background: rgba(37,99,235,0.1); color: var(--blue-accent); }
+
+        /* ===== OFFRES ===== */
+        .offres-diagnostics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 64px;
+        }
+        .offre-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 2px solid var(--gray-200);
+            transition: var(--transition);
+            position: relative;
+        }
+        .offre-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+        .offre-card.popular {
+            border-color: var(--blue-accent);
+            box-shadow: 0 0 0 1px var(--blue-accent);
+        }
+        .popular-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--blue-accent);
+            color: var(--white);
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+        .offre-name {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gray-500);
+            margin-bottom: 8px;
+        }
+        .offre-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 4px; }
+        .offre-price {
+            font-size: 2.25rem;
+            font-weight: 900;
+            color: var(--blue-nuit);
+            margin-bottom: 4px;
+        }
+        .offre-price-ht { font-size: 0.875rem; color: var(--gray-500); margin-bottom: 16px; }
+        .offre-deduit {
+            background: rgba(56,161,105,0.1);
+            color: var(--green);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .offre-target {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .offre-features li {
+            font-size: 0.875rem;
+            color: var(--gray-700);
+            padding: 8px 0 8px 24px;
+            position: relative;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .offre-features li:last-child { border-bottom: none; }
+        .offre-features li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-weight: 700;
+        }
+        .offre-card .btn { width: 100%; margin-top: 24px; }
+
+        /* Packs conformite */
+        .packs-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .packs-subtitle {
+            text-align: center;
+            color: var(--gray-500);
+            margin-bottom: 32px;
+            font-size: 0.9375rem;
+        }
+        .packs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .pack-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 24px;
+            border: 1px solid var(--gray-200);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .pack-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        .pack-role {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+        .pack-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 12px; }
+        .pack-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--blue-nuit);
+            margin-bottom: 4px;
+        }
+        .pack-price-sub { font-size: 0.75rem; color: var(--gray-500); margin-bottom: 16px; }
+        .pack-features {
+            text-align: left;
+            margin-bottom: 16px;
+        }
+        .pack-features li {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            padding: 4px 0 4px 16px;
+            position: relative;
+        }
+        .pack-features li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-weight: 700;
+            font-size: 0.7rem;
+        }
+
+        /* ===== POURQUOI COMPLIA ===== */
+        .differenciateurs-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+        .diff-card {
+            text-align: center;
+            padding: 24px 16px;
+        }
+        .diff-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: rgba(37,99,235,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 16px;
+        }
+        .diff-card h4 { font-size: 0.9375rem; font-weight: 700; margin-bottom: 8px; }
+        .diff-card p { font-size: 0.8125rem; color: var(--gray-600); }
+        .citation-block {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 40px;
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            border-left: 4px solid var(--blue-accent);
+        }
+        .citation-block blockquote {
+            font-size: 1.125rem;
+            color: var(--gray-700);
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .citation-author {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--blue-nuit);
+        }
+        .citation-role {
+            font-size: 0.8125rem;
+            color: var(--gray-500);
+        }
+
+        /* ===== GARANTIE ===== */
+        .garantie-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--blue-nuit) 0%, #1a2d5a 100%);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            color: var(--white);
+        }
+        .garantie-shield {
+            flex-shrink: 0;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(56,161,105,0.2);
+            border: 3px solid var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+        .garantie-content h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+        .garantie-content h3 span { color: var(--green); }
+        .garantie-content p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item {
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--blue-nuit);
+            text-align: left;
+            transition: var(--transition);
+        }
+        .faq-question:hover { color: var(--blue-accent); }
+        .faq-chevron {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            font-size: 1.25rem;
+            color: var(--gray-500);
+        }
+        .faq-item.active .faq-chevron { transform: rotate(180deg); }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+        .faq-item.active .faq-answer { max-height: 300px; }
+        .faq-answer p {
+            padding: 0 0 20px;
+            color: var(--gray-600);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+
+        /* ===== CTA FINAL ===== */
+        .cta-final {
+            background: linear-gradient(135deg, var(--blue-nuit) 0%, #1a2d5a 50%, #0d1a35 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-final::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(229,62,62,0.1) 0%, transparent 70%);
+        }
+        .cta-final .container { position: relative; z-index: 1; }
+        .cta-final h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        .cta-final p {
+            font-size: 1.125rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+        .cta-final-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+        .cta-promo {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(56,161,105,0.15);
+            border: 1px solid rgba(56,161,105,0.3);
+            padding: 12px 24px;
+            border-radius: 12px;
+            color: #68D391;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #080E1A;
+            color: rgba(255,255,255,0.5);
+            padding: 48px 0 32px;
+        }
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 32px;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .footer-brand .logo { margin-bottom: 12px; }
+        .footer-brand .logo span { color: var(--red); }
+        .footer-brand p { font-size: 0.8125rem; max-width: 300px; line-height: 1.6; }
+        .footer-links h5 {
+            color: var(--white);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .footer-links a {
+            display: block;
+            font-size: 0.8125rem;
+            margin-bottom: 8px;
+            transition: var(--transition);
+        }
+        .footer-links a:hover { color: var(--white); }
+        .footer-disclaimer {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            margin-bottom: 16px;
+        }
+        .footer-disclaimer p {
+            font-size: 0.6875rem;
+            line-height: 1.7;
+            max-width: 900px;
+        }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .roles-grid { grid-template-columns: repeat(2, 1fr); }
+            .differenciateurs-grid { grid-template-columns: repeat(3, 1fr); }
+            .packs-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .section { padding: 60px 0; }
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero { padding: 120px 0 60px; }
+            .concerne-grid { grid-template-columns: 1fr; }
+            .roles-grid { grid-template-columns: 1fr; }
+            .steps-grid { grid-template-columns: 1fr; gap: 24px; }
+            .steps-grid::before { display: none; }
+            .offres-diagnostics { grid-template-columns: 1fr; }
+            .packs-grid { grid-template-columns: 1fr; }
+            .differenciateurs-grid { grid-template-columns: repeat(2, 1fr); }
+            .garantie-box { flex-direction: column; text-align: center; padding: 32px; }
+            .timeline-track { flex-direction: column; gap: 24px; align-items: flex-start; padding-left: 40px; }
+            .timeline-track::before {
+                top: 0;
+                bottom: 0;
+                left: 20px;
+                width: 3px;
+                height: auto;
+                right: auto;
+            }
+            .timeline-progress {
+                top: 0;
+                left: 20px;
+                width: 3px;
+                height: 50%;
+            }
+            .timeline-point { display: flex; align-items: center; gap: 16px; text-align: left; }
+            .timeline-dot { margin: 0; flex-shrink: 0; }
+            .risques-table { font-size: 0.875rem; }
+            .risques-table th, .risques-table td { padding: 12px 16px; }
+            .footer-top { flex-direction: column; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .hero-ctas { flex-direction: column; }
+            .hero-ctas .btn { width: 100%; }
+            .hero-trust { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .countdown { gap: 8px; }
+            .countdown-item { min-width: 70px; padding: 12px 14px; }
+            .countdown-number { font-size: 1.5rem; }
+            .differenciateurs-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .animate-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+        <a href="#" class="logo">Complia<span>.</span></a>
+        <div class="nav-links">
+            <a href="#offres">Nos offres</a>
+            <a href="#comment-ca-marche">Comment ca marche</a>
+            <a href="#faq">FAQ</a>
+            <div class="nav-cta">
+                <a href="#cta-pre-audit" class="btn btn-primary btn-sm">Mon diagnostic gratuit</a>
+            </div>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+    <div class="container">
+        <div class="hero-badge">
+            <span>&#9888;</span> Reglement (UE) 2024/1689 en vigueur
+        </div>
+        <h1>
+            Votre entreprise utilise l'IA ?<br>
+            <span class="highlight">Vous etes peut-etre deja hors-la-loi.</span>
+        </h1>
+        <p class="hero-subtitle">
+            L'EU AI Act impose de nouvelles obligations a toutes les entreprises utilisant ou developpant de l'intelligence artificielle. Les premieres sanctions sont applicables depuis fevrier 2025. Decouvrez votre niveau d'exposition en 5 minutes.
+        </p>
+        <div class="hero-ctas">
+            <a href="#cta-pre-audit" class="btn btn-primary btn-lg" id="cta-pre-audit">
+                <span>&#9889;</span> Commencer mon diagnostic gratuit
+            </a>
+            <a href="#offres" class="btn btn-outline-white btn-lg">Decouvrir nos offres</a>
+        </div>
+        <div class="hero-trust">
+            <div class="trust-item">
+                <span class="trust-icon">&#10003;</span>
+                <span>5 minutes chrono</span>
+            </div>
+            <div class="trust-item">
+                <span class="trust-icon">&#10003;</span>
+                <span>Resultat instantane</span>
+            </div>
+            <div class="trust-item">
+                <span class="trust-icon">&#10003;</span>
+                <span>Base juridique verifiee</span>
+            </div>
+            <div class="trust-item">
+                <span class="trust-icon">&#10003;</span>
+                <span>Donnees securisees</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== BARRE URGENCE / TIMELINE ===== -->
+<section class="urgence-bar" id="urgence">
+    <div class="container">
+        <div class="countdown-wrapper">
+            <div class="countdown-label">Temps restant avant les obligations principales</div>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number red" id="cd-days">---</div>
+                    <div class="countdown-unit">Jours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="cd-hours">--</div>
+                    <div class="countdown-unit">Heures</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="cd-minutes">--</div>
+                    <div class="countdown-unit">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="cd-seconds">--</div>
+                    <div class="countdown-unit">Secondes</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-track">
+            <div class="timeline-progress"></div>
+            <div class="timeline-point">
+                <div class="timeline-dot done">&#10003;</div>
+                <div class="timeline-date">Fev. 2025</div>
+                <div class="timeline-desc">Pratiques IA interdites en vigueur</div>
+            </div>
+            <div class="timeline-point">
+                <div class="timeline-dot done">&#10003;</div>
+                <div class="timeline-date">Aout 2025</div>
+                <div class="timeline-desc">Obligations GPAI et transparence</div>
+            </div>
+            <div class="timeline-point">
+                <div class="timeline-dot critical">!</div>
+                <div class="timeline-date">Aout 2026</div>
+                <div class="timeline-desc">Systemes haut risque - Echeance critique</div>
+            </div>
+            <div class="timeline-point">
+                <div class="timeline-dot future">&#8594;</div>
+                <div class="timeline-date">Aout 2027</div>
+                <div class="timeline-desc">Conformite produits integrant IA</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ETES-VOUS CONCERNE ? ===== -->
+<section class="section section-light" id="concerne">
+    <div class="container">
+        <div class="text-center">
+            <span class="badge badge-red">AI Act</span>
+            <h2 class="section-title" style="margin-top: 12px;">Etes-vous concerne ?</h2>
+            <p class="section-subtitle">L'EU AI Act s'applique bien au-dela des entreprises tech. Si vous utilisez, developpez ou distribuez des systemes d'IA, vous avez des obligations legales.</p>
+        </div>
+        <div class="concerne-grid">
+            <div class="concerne-card animate-in">
+                <div class="concerne-icon">&#128187;</div>
+                <h3>Vous utilisez l'IA</h3>
+                <p>Vous deployez des outils d'intelligence artificielle dans vos operations quotidiennes, meme sans le savoir.</p>
+                <div class="concerne-examples">
+                    <span>Exemples concrets :</span>
+                    <ul>
+                        <li>ChatGPT ou Copilot en interne</li>
+                        <li>Outils RH de tri de CV</li>
+                        <li>Scoring ou notation client</li>
+                        <li>Chatbots service client</li>
+                        <li>Analyse predictive metier</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="concerne-card animate-in">
+                <div class="concerne-icon">&#128736;</div>
+                <h3>Vous developpez l'IA</h3>
+                <p>Vous creez, entrainez ou mettez sur le marche des systemes d'intelligence artificielle sous votre marque.</p>
+                <div class="concerne-examples">
+                    <span>Exemples concrets :</span>
+                    <ul>
+                        <li>Editeurs SaaS avec composants IA</li>
+                        <li>Startups IA / ML</li>
+                        <li>DSI developpant des modeles internes</li>
+                        <li>Solutions de recommandation</li>
+                        <li>Moteurs de decision automatisee</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="concerne-card animate-in">
+                <div class="concerne-icon">&#128666;</div>
+                <h3>Vous distribuez l'IA</h3>
+                <p>Vous importez, revendez ou integrez des solutions d'IA developpees par des tiers dans l'Union europeenne.</p>
+                <div class="concerne-examples">
+                    <span>Exemples concrets :</span>
+                    <ul>
+                        <li>Integrateurs de solutions IA</li>
+                        <li>Revendeurs de logiciels IA</li>
+                        <li>Importateurs de technologies non-UE</li>
+                        <li>Distributeurs de produits connectes IA</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== RISQUES ===== -->
+<section class="section" id="risques">
+    <div class="container">
+        <div class="text-center">
+            <span class="badge badge-red">Sanctions</span>
+            <h2 class="section-title" style="margin-top: 12px;">Les risques sont reels et immediats</h2>
+            <p class="section-subtitle">L'EU AI Act prevoit des sanctions financieres parmi les plus elevees du droit europeen, comparables au RGPD.</p>
+        </div>
+        <div class="risques-table-wrapper animate-in">
+            <table class="risques-table">
+                <thead>
+                    <tr>
+                        <th>Type d'infraction</th>
+                        <th>Sanction maximale</th>
+                        <th>Ou % du CA mondial</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pratiques IA interdites (Art. 5)</td>
+                        <td class="amende">35 M&#8364;</td>
+                        <td><strong>7% du CA mondial</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Non-conformite systemes haut risque</td>
+                        <td class="amende">15 M&#8364;</td>
+                        <td><strong>3% du CA mondial</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Informations incorrectes aux autorites</td>
+                        <td class="amende">7,5 M&#8364;</td>
+                        <td><strong>1% du CA mondial</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="risques-alert animate-in">
+            <h4>Vous etes peut-etre deja en infraction</h4>
+            <p>
+                Les interdictions relatives aux pratiques IA prohibees sont <strong>en vigueur depuis le 2 fevrier 2025</strong>.
+                Les obligations de transparence pour les IA generatives et les modeles GPAI s'appliquent <strong>depuis aout 2025</strong>.
+                <br><br>
+                Concretement : si vous utilisez des systemes d'IA sans avoir mis en place votre <strong>registre d'activites</strong>,
+                <strong>informe vos employes</strong> ou <strong>verifie la notice technique de vos fournisseurs</strong>,
+                vous etes <strong>deja en situation d'illegalite</strong>.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== LES 4 ROLES ===== -->
+<section class="section section-light" id="roles">
+    <div class="container">
+        <div class="text-center">
+            <span class="badge badge-blue">Obligations</span>
+            <h2 class="section-title" style="margin-top: 12px;">Les 4 roles definis par l'AI Act</h2>
+            <p class="section-subtitle">Chaque entreprise endosse un ou plusieurs roles selon son utilisation de l'IA. Chaque role implique des obligations specifiques.</p>
+        </div>
+        <div class="roles-grid">
+            <div class="role-card fournisseur animate-in">
+                <div class="role-label">Role 1</div>
+                <h3>Fournisseur</h3>
+                <p class="role-desc">Developpe ou met sur le marche un systeme d'IA sous sa propre marque</p>
+                <ul class="role-obligations">
+                    <li>Systeme de gestion de la qualite (QMS)</li>
+                    <li>Documentation technique (Annexe IV)</li>
+                    <li>Marquage CE obligatoire</li>
+                    <li>Declaration de conformite</li>
+                    <li>Enregistrement base UE</li>
+                    <li>Surveillance post-marche</li>
+                </ul>
+                <div class="complexity-tag complexity-critical">Complexite tres elevee</div>
+            </div>
+            <div class="role-card deployeur animate-in">
+                <div class="role-label">Role 2</div>
+                <h3>Deployeur</h3>
+                <p class="role-desc">Utilise des systemes d'IA dans le cadre de ses activites professionnelles</p>
+                <ul class="role-obligations">
+                    <li>Surveillance humaine</li>
+                    <li>Registre des activites IA</li>
+                    <li>FRIA (si haut risque)</li>
+                    <li>Information des personnes</li>
+                    <li>Conservation des logs (6 mois+)</li>
+                    <li>Information des travailleurs</li>
+                </ul>
+                <div class="complexity-tag complexity-moderate">Complexite moyenne</div>
+            </div>
+            <div class="role-card importateur animate-in">
+                <div class="role-label">Role 3</div>
+                <h3>Importateur</h3>
+                <p class="role-desc">Importe des systemes d'IA de fournisseurs hors Union europeenne</p>
+                <ul class="role-obligations">
+                    <li>Verification conformite fournisseur</li>
+                    <li>Marquage CE present</li>
+                    <li>Documentation disponible</li>
+                    <li>Identification sur le produit</li>
+                    <li>Conditions de stockage</li>
+                </ul>
+                <div class="complexity-tag complexity-elevated">Complexite elevee</div>
+            </div>
+            <div class="role-card distributeur animate-in">
+                <div class="role-label">Role 4</div>
+                <h3>Distributeur</h3>
+                <p class="role-desc">Distribue des systemes d'IA sans les modifier</p>
+                <ul class="role-obligations">
+                    <li>Verification marquage CE</li>
+                    <li>Conditions de stockage</li>
+                    <li>Signalement non-conformites</li>
+                </ul>
+                <div class="complexity-tag complexity-low">Complexite faible</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== COMMENT CA MARCHE ===== -->
+<section class="section" id="comment-ca-marche">
+    <div class="container">
+        <div class="text-center">
+            <span class="badge badge-green">Simple et rapide</span>
+            <h2 class="section-title" style="margin-top: 12px;">Comment ca marche ?</h2>
+            <p class="section-subtitle">Trois etapes pour passer de l'incertitude a la conformite.</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card animate-in">
+                <div class="step-number">1</div>
+                <h3>Diagnostic</h3>
+                <p>Repondez a notre questionnaire en ligne en 5 minutes. Identifiez votre role, vos systemes IA et votre niveau d'exposition.</p>
+                <div class="step-tag free">Gratuit - 5 min</div>
+            </div>
+            <div class="step-card animate-in">
+                <div class="step-number">2</div>
+                <h3>Plan d'action</h3>
+                <p>Recevez un rapport personnalise avec votre score de risque, vos obligations et une feuille de route priorisee.</p>
+                <div class="step-tag paid">A partir de 990&#8364;</div>
+            </div>
+            <div class="step-card animate-in">
+                <div class="step-number">3</div>
+                <h3>Conformite</h3>
+                <p>Nous vous accompagnons dans la mise en conformite complete : documentation, procedures, formation et audit blanc.</p>
+                <div class="step-tag paid">Accompagnement sur-mesure</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== NOS OFFRES ===== -->
+<section class="section section-light" id="offres">
+    <div class="container">
+        <div class="text-center">
+            <span class="badge badge-blue">Tarifs</span>
+            <h2 class="section-title" style="margin-top: 12px;">Nos offres de diagnostic</h2>
+            <p class="section-subtitle">Choisissez le niveau de diagnostic adapte a votre situation. Chaque diagnostic est deductible de votre pack conformite.</p>
+        </div>
+
+        <!-- Diagnostics -->
+        <div class="offres-diagnostics">
+            <div class="offre-card animate-in">
+                <div class="offre-name">Essentiel</div>
+                <h3>Diagnostic Flash</h3>
+                <div class="offre-price">990&#8364;</div>
+                <div class="offre-price-ht">HT - Livraison 3-5 jours</div>
+                <div class="offre-deduit">&#10003; Deduit de tout pack conformite</div>
+                <p class="offre-target">Ideal pour : TPE, startups, premiere evaluation</p>
+                <ul class="offre-features">
+                    <li>Entretien de cadrage approfondi</li>
+                    <li>Identification du role AI Act</li>
+                    <li>Inventaire IA express</li>
+                    <li>Classification des systemes</li>
+                    <li>Score de risque /10</li>
+                    <li>Rapport Flash (5-8 pages)</li>
+                    <li>Call restitution 20 min</li>
+                </ul>
+                <a href="#cta-pre-audit" class="btn btn-secondary">Choisir le Flash</a>
+            </div>
+            <div class="offre-card popular animate-in">
+                <div class="popular-badge">Le plus demande</div>
+                <div class="offre-name">Avance</div>
+                <h3>Diagnostic Strategique</h3>
+                <div class="offre-price">2 490&#8364;</div>
+                <div class="offre-price-ht">HT - Livraison 10-12 jours</div>
+                <div class="offre-deduit">&#10003; Deduit de tout pack conformite</div>
+                <p class="offre-target">Ideal pour : PME, startups matures, ETI en evaluation</p>
+                <ul class="offre-features">
+                    <li>Identification multi-roles</li>
+                    <li>Entretiens multi-parties (2-3h)</li>
+                    <li>Inventaire jusqu'a 3 systemes IA</li>
+                    <li>Gap Analysis detaille</li>
+                    <li>Scoring risques par systeme</li>
+                    <li>Roadmap 12 mois priorisee</li>
+                    <li>Rapport complet (15-25 pages)</li>
+                    <li>Presentation COMEX incluse</li>
+                    <li>Support 30 jours post-livraison</li>
+                </ul>
+                <a href="#cta-pre-audit" class="btn btn-primary">Choisir le Strategique</a>
+            </div>
+            <div class="offre-card animate-in">
+                <div class="offre-name">Premium</div>
+                <h3>Diagnostic Premium</h3>
+                <div class="offre-price">6 490&#8364;</div>
+                <div class="offre-price-ht">HT - Livraison 15-30 jours</div>
+                <div class="offre-deduit">&#10003; Deduit de tout pack conformite</div>
+                <p class="offre-target">Ideal pour : ETI, scale-ups, multi-systemes</p>
+                <ul class="offre-features">
+                    <li>Tout le pack Strategique inclus</li>
+                    <li>Inventaire jusqu'a 10 systemes IA</li>
+                    <li>Entretiens croises prolonges</li>
+                    <li>Presentation COMEX/CODIR</li>
+                    <li>Rapport exhaustif (20-40 pages)</li>
+                    <li>Templates documentation inclus</li>
+                    <li>Call restitution sans limite</li>
+                    <li>Support 60 jours post-livraison</li>
+                </ul>
+                <a href="#cta-pre-audit" class="btn btn-secondary">Choisir le Premium</a>
+            </div>
+        </div>
+
+        <!-- Packs conformite -->
+        <h3 class="packs-title">Packs conformite par role</h3>
+        <p class="packs-subtitle">Apres le diagnostic, passez a la mise en conformite complete adaptee a votre role AI Act.</p>
+        <div class="packs-grid">
+            <div class="pack-card animate-in">
+                <div class="pack-role" style="color: var(--blue-accent);">Deployeur</div>
+                <h4>Pack Conformite</h4>
+                <div class="pack-price">3 990&#8364;</div>
+                <div class="pack-price-sub">HT - Best-seller</div>
+                <ul class="pack-features">
+                    <li>Registre des systemes IA</li>
+                    <li>Procedures surveillance humaine</li>
+                    <li>Fiches information utilisateurs</li>
+                    <li>Conservation logs (6 mois+)</li>
+                    <li>Formation equipe (2h)</li>
+                    <li>Dossier de conformite complet</li>
+                    <li>Garantie "Audit Ready"</li>
+                </ul>
+                <a href="#cta-pre-audit" class="btn btn-sm btn-secondary" style="width:100%; margin-top: 12px;">En savoir plus</a>
+            </div>
+            <div class="pack-card animate-in">
+                <div class="pack-role" style="color: var(--red);">Fournisseur</div>
+                <h4>Roadmap Fournisseur</h4>
+                <div class="pack-price">6 990&#8364;</div>
+                <div class="pack-price-sub">HT</div>
+                <ul class="pack-features">
+                    <li>Analyse obligations Annexe IV</li>
+                    <li>Plan QMS et documentation</li>
+                    <li>Strategie marquage CE</li>
+                    <li>Roadmap conformite detaillee</li>
+                    <li>Accompagnement fournisseur</li>
+                </ul>
+                <a href="#cta-pre-audit" class="btn btn-sm btn-secondary" style="width:100%; margin-top: 12px;">En savoir plus</a>
+            </div>
+            <div class="pack-card animate-in">
+                <div class="pack-role" style="color: #F97316;">Importateur</div>
+                <h4>Pack Importateur</h4>
+                <div class="pack-price">4 990&#8364;</div>
+                <div class="pack-price-sub">HT</div>
+                <ul class="pack-features">
+                    <li>Audit conformite fournisseur</li>
+                    <li>Verification marquage CE</li>
+                    <li>Documentation obligatoire</li>
+                    <li>Procedures de signalement</li>
+                    <li>Formation equipe</li>
+                </ul>
+                <a href="#cta-pre-audit" class="btn btn-sm btn-secondary" style="width:100%; margin-top: 12px;">En savoir plus</a>
+            </div>
+            <div class="pack-card animate-in">
+                <div class="pack-role" style="color: var(--green);">Distributeur</div>
+                <h4>Pack Distributeur</h4>
+                <div class="pack-price">2 490&#8364;</div>
+                <div class="pack-price-sub">HT</div>
+                <ul class="pack-features">
+                    <li>Verification marquage CE</li>
+                    <li>Conditions de stockage</li>
+                    <li>Procedures signalement</li>
+                    <li>Formation equipe</li>
+                </ul>
+                <a href="#cta-pre-audit" class="btn btn-sm btn-secondary" style="width:100%; margin-top: 12px;">En savoir plus</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== POURQUOI COMPLIA ===== -->
+<section class="section" id="pourquoi">
+    <div class="container">
+        <div class="text-center">
+            <span class="badge badge-blue">Nos atouts</span>
+            <h2 class="section-title" style="margin-top: 12px;">Pourquoi choisir Complia ?</h2>
+            <p class="section-subtitle">Nous ne sommes ni un cabinet d'avocats, ni un cabinet de conseil generique. Nous sommes le pont entre la tech et la reglementation.</p>
+        </div>
+        <div class="differenciateurs-grid">
+            <div class="diff-card animate-in">
+                <div class="diff-icon">&#9889;</div>
+                <h4>Rapidite d'execution</h4>
+                <p>Diagnostics en 5 a 20 jours la ou les cabinets classiques prennent des mois.</p>
+            </div>
+            <div class="diff-card animate-in">
+                <div class="diff-icon">&#128295;</div>
+                <h4>Double expertise</h4>
+                <p>Tech + Reglementaire. Pas de traduction necessaire entre vos equipes.</p>
+            </div>
+            <div class="diff-card animate-in">
+                <div class="diff-icon">&#128196;</div>
+                <h4>Livrables exploitables</h4>
+                <p>Rapports immediatement validables par vos avocats ou juristes internes.</p>
+            </div>
+            <div class="diff-card animate-in">
+                <div class="diff-icon">&#127891;</div>
+                <h4>Approche pedagogique</h4>
+                <p>Nous vous expliquons, formons et rendons autonomes. Zero jargon inutile.</p>
+            </div>
+            <div class="diff-card animate-in">
+                <div class="diff-icon">&#129309;</div>
+                <h4>Partenaire strategique</h4>
+                <p>La conformite AI Act est un processus continu. Nous vous accompagnons dans la duree.</p>
+            </div>
+        </div>
+        <div class="citation-block animate-in">
+            <blockquote>
+                "Les avocats ne comprennent pas la technique, et les ingenieurs ne comprennent pas la loi.
+                Complia fait le pont entre les deux : nous auditons vos systemes, detectons les risques
+                et livrons une feuille de route cle en main pour que vous soyez conformes avant les echeances."
+            </blockquote>
+            <div class="citation-author">Leonard Maze</div>
+            <div class="citation-role">Fondateur &amp; Consultant Expert, Complia</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== GARANTIE ===== -->
+<section class="section section-light" id="garantie">
+    <div class="container">
+        <div class="text-center" style="margin-bottom: 40px;">
+            <span class="badge badge-green">Engagement</span>
+            <h2 class="section-title" style="margin-top: 12px;">Notre garantie</h2>
+        </div>
+        <div class="garantie-box animate-in">
+            <div class="garantie-shield">&#128737;</div>
+            <div class="garantie-content">
+                <h3>Garantie <span>"Audit Ready"</span></h3>
+                <p>
+                    Si vous faites l'objet d'un controle dans les 12 mois suivant notre accompagnement,
+                    nous vous fournissons une <strong>assistance prioritaire garantie</strong> pour vous aider
+                    dans votre reponse aux autorites.
+                    <br><br>
+                    Nos livrables sont concus pour etre presentes directement aux autorites de controle.
+                    Nous engageons notre credibilite sur la qualite de notre travail.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section" id="faq">
+    <div class="container">
+        <div class="text-center">
+            <span class="badge badge-blue">Questions</span>
+            <h2 class="section-title" style="margin-top: 12px;">Questions frequentes</h2>
+            <p class="section-subtitle">Les reponses aux interrogations les plus courantes de nos clients.</p>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Suis-je concerne si j'utilise juste ChatGPT en entreprise ?</span>
+                    <span class="faq-chevron">&#9660;</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Potentiellement oui. L'utilisation de systemes d'IA a usage general, y compris ChatGPT, Copilot ou d'autres outils similaires, peut creer des obligations au titre de l'AI Act, notamment en matiere de transparence et d'information des utilisateurs. Un diagnostic permet de clarifier votre situation precise et vos obligations reelles.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Quel est le bon moment pour commencer ?</span>
+                    <span class="faq-chevron">&#9660;</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Maintenant. Les premieres sanctions sont applicables depuis fevrier 2025 et les obligations majeures pour les systemes haut risque entrent en vigueur en aout 2026. La mise en conformite prend du temps : entre 3 semaines et plusieurs mois selon la complexite. Plus vous commencez tot, plus vous maitrisez le calendrier et les couts.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Travaillez-vous avec notre avocat ?</span>
+                    <span class="faq-chevron">&#9660;</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Absolument. Nos livrables sont concus pour etre directement validables par vos conseils juridiques. Nous pouvons travailler en coordination directe avec votre avocat et integrons systematiquement un call de coordination avec vos juristes dans nos packs conformite.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Quelle difference avec un cabinet d'avocats ?</span>
+                    <span class="faq-chevron">&#9660;</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Nous apportons l'expertise technique sur les systemes d'IA que les avocats n'ont generalement pas. Nous sommes complementaires : nous analysons vos systemes, identifions les risques concrets, produisons la documentation technique et les procedures operationnelles. Vos avocats valident juridiquement si necessaire. En pratique, nous leur faisons gagner un temps considerable et nos tarifs sont 3 a 10 fois inferieurs a ceux d'un cabinet specialise.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Quelles sont les modalites de paiement ?</span>
+                    <span class="faq-chevron">&#9660;</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Nous proposons le paiement par carte bancaire ou virement. Pour toute prestation superieure a 2 000&#8364; HT, un paiement en 3 fois sans frais est disponible. Pour les prestations depassant 10 000&#8364;, nous proposons un echelonnement 40% / 30% / 30%. Chaque diagnostic est deductible du pack conformite signe dans les 30 jours.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Quel est le delai de livraison ?</span>
+                    <span class="faq-chevron">&#9660;</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Le Diagnostic Flash est livre en 3 a 5 jours ouvres, le Strategique en 10 a 12 jours, et le Premium en 15 a 30 jours. Les packs conformite necessitent entre 3 et 8 semaines selon la complexite. Nous nous engageons sur les delais annonces et vous tenons informe de l'avancement a chaque etape.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA FINAL ===== -->
+<section class="cta-final" id="cta-final">
+    <div class="container">
+        <h2>Ne decouvrez pas l'AI Act<br>le jour d'un controle.</h2>
+        <p>Evaluez votre conformite maintenant. 5 minutes suffisent pour connaitre votre niveau d'exposition et les actions a engager.</p>
+        <div class="cta-final-buttons">
+            <a href="#cta-pre-audit" class="btn btn-primary btn-lg">
+                <span>&#9889;</span> Commencer mon diagnostic gratuit
+            </a>
+            <a href="#offres" class="btn btn-outline-white btn-lg">Voir les offres detaillees</a>
+        </div>
+        <div class="cta-promo">
+            <span>&#127873;</span> Offre de lancement : 2 mois de Compliance Officer offerts avec tout pack conformite - Jusqu'au 31 mars 2026
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="logo">Complia<span>.</span></div>
+                <p>Cabinet de conseil specialise dans la mise en conformite des entreprises avec l'EU AI Act (Reglement UE 2024/1689).</p>
+            </div>
+            <div class="footer-links">
+                <h5>Offres</h5>
+                <a href="#offres">Diagnostic Flash</a>
+                <a href="#offres">Diagnostic Strategique</a>
+                <a href="#offres">Diagnostic Premium</a>
+                <a href="#offres">Packs Conformite</a>
+            </div>
+            <div class="footer-links">
+                <h5>Ressources</h5>
+                <a href="#faq">FAQ</a>
+                <a href="#concerne">Suis-je concerne ?</a>
+                <a href="#roles">Les 4 roles AI Act</a>
+                <a href="#risques">Sanctions et risques</a>
+            </div>
+            <div class="footer-links">
+                <h5>Contact</h5>
+                <a href="mailto:contact@complia.eu">contact@complia.eu</a>
+                <a href="#">complia.eu</a>
+                <a href="#">France</a>
+            </div>
+        </div>
+        <div class="footer-disclaimer">
+            <p>
+                <strong>AVERTISSEMENT LEGAL &amp; LIMITATION DE RESPONSABILITE</strong> &mdash;
+                La societe COMPLIA est un cabinet de conseil technique et operationnel specialise dans les systemes d'intelligence artificielle.
+                COMPLIA n'est pas un cabinet d'avocats. Les prestations, analyses, rapports et livrables fournis par COMPLIA constituent une
+                assistance technique a la mise en conformite au regard du Reglement (UE) 2024/1689 (AI Act). Ils ne sauraient en aucun cas etre
+                assimiles a une consultation juridique, un avis de droit ou un mandat de representation legale. L'interpretation des textes
+                reglementaires etant susceptible d'evoluer (jurisprudence, lignes directrices de l'AI Office), les recommandations de COMPLIA
+                sont fournies a titre informatif sur la base de l'etat de l'art au moment de la prestation. Le Client reste seul responsable de
+                la validation juridique finale de sa conformite et est invite a soumettre les livrables de COMPLIA a son conseil juridique
+                habituel ou a un avocat specialise avant toute prise de decision strategique ou declaration officielle.
+            </p>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Complia. Tous droits reserves.</span>
+            <div style="display: flex; gap: 24px;">
+                <a href="#">Mentions legales</a>
+                <a href="#">CGV</a>
+                <a href="#">Politique de confidentialite</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+(function() {
+    'use strict';
+
+    // === COUNTDOWN vers le 2 aout 2026 ===
+    const TARGET = new Date('2026-08-02T00:00:00+02:00').getTime();
+
+    function updateCountdown() {
+        const now = Date.now();
+        const diff = TARGET - now;
+
+        if (diff <= 0) {
+            document.getElementById('cd-days').textContent = '0';
+            document.getElementById('cd-hours').textContent = '0';
+            document.getElementById('cd-minutes').textContent = '0';
+            document.getElementById('cd-seconds').textContent = '0';
+            return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('cd-days').textContent = days;
+        document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // === NAVBAR scroll effect ===
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 20) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // === FAQ Accordion ===
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var item = this.parentElement;
+            var isActive = item.classList.contains('active');
+
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(function(el) {
+                el.classList.remove('active');
+                el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            });
+
+            // Open clicked if was closed
+            if (!isActive) {
+                item.classList.add('active');
+                this.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+
+    // === Scroll animations ===
+    var animateElements = document.querySelectorAll('.animate-in');
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    animateElements.forEach(function(el) { observer.observe(el); });
+
+    // === Smooth scroll for anchor links ===
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                var offset = 80;
+                var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top: top, behavior: 'smooth' });
+
+                // Close mobile menu if open
+                var navLinks = document.querySelector('.nav-links');
+                if (navLinks) navLinks.classList.remove('mobile-open');
+            }
+        });
+    });
+
+    // === Mobile menu styles (injected dynamically) ===
+    var style = document.createElement('style');
+    style.textContent = '.nav-links.mobile-open{display:flex!important;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(12px);padding:24px;gap:16px;border-bottom:1px solid var(--gray-200);box-shadow:var(--shadow-lg)}';
+    document.head.appendChild(style);
+
+})();
+</script>
+
+</body>
+</html>
